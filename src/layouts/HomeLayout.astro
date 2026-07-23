@@ -75,7 +75,7 @@ const { title } = Astro.props;
     <slot />
   </main>
   <footer
-    class="bg-section-background group relative m-8 h-fit min-h-80 overflow-clip rounded-xl p-4 md:h-80"
+    class="bg-section-background group relative mx-6 mb-4 h-fit min-h-80 overflow-clip rounded-md p-4 pb-38 md:h-80 md:pb-0"
   >
     <div class="fire" style={`--pixel-texture: url(${fire.src})`}></div>
     <div
@@ -83,7 +83,7 @@ const { title } = Astro.props;
     >
       <div class="flex flex-col items-center gap-4">
         <div
-          class="bg-section-background font-departuremono text-dm-sm flex w-full flex-col items-center gap-8 rounded-xl p-2 px-4 py-6 font-bold backdrop-blur-md md:flex-row hover:[&_svg]:scale-110"
+          class="bg-section-background font-departuremono text-dm-sm border-accent/20 flex w-full flex-col items-center gap-8 rounded-xl border-2 p-2 px-4 py-6 font-bold backdrop-blur-md md:flex-row hover:[&_svg]:scale-110"
         >
           <Icon
             name="navigation"
@@ -115,7 +115,7 @@ const { title } = Astro.props;
           </a>
         </div>
         <div
-          class="bg-section-background font-departuremono text-dm-sm flex w-full flex-col items-center gap-8 rounded-xl p-2 px-4 py-6 font-bold backdrop-blur-md md:flex-row hover:[&_svg]:scale-110"
+          class="bg-section-background font-departuremono text-dm-sm border-accent/20 flex w-full flex-col items-center gap-8 rounded-xl border-2 p-2 px-4 py-6 font-bold backdrop-blur-md md:flex-row hover:[&_svg]:scale-110"
         >
           (C) 2025-2026 Spinozanilast. <a
             class="link arrow text-dm-sm decoration-accent decoration-3 underline-offset-1 hover:scale-110 hover:underline"
@@ -303,38 +303,40 @@ const { title } = Astro.props;
     @apply bg-section-background fixed top-2 right-2 z-40 flex w-fit items-center gap-2 place-self-end-safe rounded-xl p-1 pr-4 backdrop-blur-sm;
   }
 
-  footer .fire {
-    @apply top-0 left-0 z-1 h-full w-full scale-500 contrast-120 group-hover:hue-rotate-180 md:absolute;
-    background-image: var(--pixel-texture);
-    image-rendering: pixelated;
-    animation: fire 10s steps(7, jump-none) infinite;
-
-    &::after {
-      @apply absolute top-0 left-0 -z-10 h-full w-full mix-blend-color-burn content-[""];
-      background: linear-gradient(
-        to bottom,
-        var(--color-primary-background),
-        var(--level-1),
-        var(--level-2),
-        var(--level-3),
-        var(--level-4)
-      );
+  footer {
+    .killer {
+      @apply absolute right-35 bottom-[5%] z-20 h-16 w-24.25 scale-300 md:bottom-[40%] md:scale-500;
+      background-image: var(--killer-sheet);
+      image-rendering: pixelated;
+      animation: killer-smoking 5s steps(8, jump-none) infinite;
     }
-  }
 
-  footer .killer {
-    @apply absolute right-35 bottom-[5%] z-20 h-16 w-24.25 scale-300 md:bottom-[40%] md:scale-500;
-    background-image: var(--killer-sheet);
-    image-rendering: pixelated;
-    animation: killer-smoking 5s steps(8, jump-none) infinite;
-  }
-
-  @keyframes killer-smoking {
-    from {
-      background-position-x: 0px;
+    @keyframes killer-smoking {
+      from {
+        background-position-x: 0px;
+      }
+      to {
+        background-position-x: -679px;
+      }
     }
-    to {
-      background-position-x: -679px;
+
+    .fire {
+      @apply top-0 left-0 z-1 h-full w-full scale-500 contrast-120 group-hover:hue-rotate-180 md:absolute;
+      background-image: var(--pixel-texture);
+      image-rendering: pixelated;
+      animation: fire 10s steps(7, jump-none) infinite;
+
+      &::after {
+        @apply absolute top-0 left-0 -z-10 h-full w-full mix-blend-color-burn content-[""];
+        background: linear-gradient(
+          to bottom,
+          var(--color-primary-background),
+          var(--level-1),
+          var(--level-2),
+          var(--level-3),
+          var(--level-4)
+        );
+      }
     }
   }
 
