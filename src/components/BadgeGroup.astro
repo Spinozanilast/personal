@@ -1,0 +1,20 @@
+---
+import { cn } from "@lib/utils";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {}
+
+const { class: className, ...attrs } = Astro.props;
+---
+
+<div class={cn("badge-group", className)} {...attrs}>
+  <slot />
+</div>
+
+<style>
+  @reference "../global.css";
+
+  .badge-group {
+    @apply my-3 flex flex-wrap gap-2;
+  }
+</style>

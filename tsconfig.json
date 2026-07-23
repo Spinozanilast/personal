@@ -11,6 +11,7 @@
       "@styles/*": ["./src/styles/*"],
       "@data/*": ["./src/data/*"],
       "@features/*": ["./src/features/*"],
+      "@content/*": ["./src/content/*"],
     },
   },
   "extends": "astro/tsconfigs/strict",

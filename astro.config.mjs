@@ -1,23 +1,29 @@
 import { defineConfig, fontProviders } from "astro/config";
+import { satteri, satteriHeadingIdsPlugin } from '@astrojs/markdown-satteri';
 import react from "@astrojs/react";
 
 import tailwindcss from "@tailwindcss/vite";
+
 import icon from "astro-icon";
+
+import mdx from "@astrojs/mdx";
 
 export default defineConfig({
   site: "https://spinozanilast.github.io",
   base: "/",
   markdown: {
+    processor: satteri({
+          hastPlugins: [
+            satteriHeadingIdsPlugin(),
+          ],
+        }),
     shikiConfig: {
       theme: "css-variables",
     },
   },
-  integrations: [
-    react(),
-    icon({
-      iconDir: "src/assets/icons",
-    }),
-  ],
+  integrations: [react(), icon({
+    iconDir: "src/assets/icons",
+  }), mdx()],
   vite: {
     plugins: [tailwindcss()],
     server: {
@@ -84,6 +90,21 @@ export default defineConfig({
             weight: "100 900",
             style: "normal",
             src: ["./src/assets/fonts/Retrogression.woff2"],
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
+      name: "Manrope",
+      cssVariable: "--font-manrope",
+      fallbacks: ["sans-serif"],
+      options: {
+        variants: [
+          {
+            weight: "100 900",
+            style: "normal",
+            src: ["./src/assets/fonts/Manrope.woff2"],
           },
         ],
       },

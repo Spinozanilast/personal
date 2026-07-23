@@ -1,0 +1,209 @@
+---
+import HomeLayout from "@layouts/HomeLayout.astro";
+import TableOfContents from "@components/TableOfContents.tsx";
+
+type Props = {
+  title: string;
+  headings?: { depth: number; slug: string; text: string }[];
+};
+
+const { title, headings = [] } = Astro.props;
+---
+
+<HomeLayout
+  title={title}
+  className="flex w-full flex-col items-center justify-self-center px-4"
+>
+  <slot name="top-bar" />
+  <div class="relative flex w-full flex-row justify-center py-4">
+    <div class="markdown-content flex w-full flex-col justify-center md:w-1/2">
+      <slot />
+    </div>
+    {
+      headings.length > 0 && (
+        <aside class="toc-sidebar">
+          <TableOfContents headings={headings} client:load />
+        </aside>
+      )
+    }
+  </div>
+</HomeLayout>
+
+<style>
+  @reference "../global.css";
+
+  .toc-sidebar {
+    position: sticky;
+    top: 20rem;
+    align-self: flex-start;
+    margin-left: 2rem;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+    width: 12rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .toc-sidebar {
+      display: none;
+    }
+  }
+
+  .markdown-content {
+    @apply prose-headings:text-accent prose-headings:font-departuremono font-manrope text-foreground;
+
+    color: var(--text-color);
+
+    h1 {
+      @apply text-dm-xl mb-2;
+    }
+
+    h2 {
+      @apply text-dm-base mt-10 mb-4 pb-2 underline decoration-wavy decoration-2 underline-offset-8;
+      color: var(--accent-color);
+    }
+
+    h3 {
+      @apply text-dm-sm mt-6 mb-2;
+      color: var(--accent-color);
+    }
+
+    h4 {
+      @apply mt-4 mb-2 text-lg;
+      color: var(--accent-color);
+    }
+
+    p {
+      @apply my-2 leading-relaxed;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+
+      &:hover {
+        color: var(--actions);
+      }
+    }
+
+    strong {
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    hr {
+      @apply my-6;
+      border: none;
+      border-top: 1px solid var(--section-secondary);
+    }
+
+    blockquote {
+      @apply my-4 pl-4 italic;
+      border-left: 3px solid var(--accent-color);
+      color: var(--text-color);
+      opacity: 0.9;
+    }
+
+    ul {
+      @apply my-2 list-inside list-disc pl-2;
+
+      li {
+        @apply my-1 leading-relaxed;
+      }
+    }
+
+    ol {
+      @apply my-2 list-inside list-decimal pl-2;
+
+      li {
+        @apply my-1 leading-relaxed;
+      }
+    }
+
+    table {
+      @apply my-4 mx-auto border-collapse p-4 text-left text-sm;
+
+      th {
+        @apply px-3 py-2 font-bold;
+        border-bottom: 2px solid var(--section-secondary);
+        color: var(--accent-color);
+      }
+
+      td {
+        @apply px-3 py-2;
+        border-bottom: 1px solid wavy var(--section-background);
+      }
+
+      th,
+      td {
+        @apply p-4;
+      }
+
+      tbody tr:nth-child(odd) {
+        background: var(--section-background);
+      }
+
+      tbody tr:nth-child(even) {
+        background: transparent;
+      }
+
+      tr:last-child td {
+        border-bottom: 2px solid var(--section-secondary);
+      }
+    }
+
+    code {
+      @apply rounded px-1.5 py-0.5 text-sm;
+      background: var(--section-background);
+      color: var(--red-accent-color);
+    }
+
+    pre {
+      @apply my-4 overflow-x-auto rounded-lg p-4;
+      background: var(--section-background);
+      border: 1px solid var(--section-secondary);
+
+      code {
+        background: none;
+        color: var(--text-color);
+        padding: 0;
+      }
+    }
+
+    img {
+      @apply my-4 rounded-lg;
+      max-width: 100%;
+    }
+
+    details {
+      @apply my-3 rounded-lg p-4;
+      background: var(--section-background);
+
+      summary {
+        @apply cursor-pointer font-bold select-none;
+        color: var(--accent-color);
+
+        &:hover {
+          color: var(--actions);
+        }
+      }
+
+      &[open] summary {
+        @apply mb-2;
+      }
+    }
+
+    kbd {
+      @apply rounded border px-1.5 py-0.5 font-mono text-sm;
+      background: var(--section-background);
+      border-color: var(--section-secondary);
+    }
+  }
+</style>

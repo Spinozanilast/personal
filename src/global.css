@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "tailwindcss/preflight.css" layer(base);
+@plugin "@tailwindcss/typography";
+
 
 @theme inline {
   /* Background Colors */
@@ -48,6 +50,7 @@
   --font-extrude: var(--font-extrude);
   --font-retrogression: var(--font-retrogression);
   --font-departuremono: var(--font-departure-mono);
+  --font-manrope: var(--font-manrope);
 
   /* DepartureMono Font Sizes (multiples of 11px) */
   --text-dm-xs: 11px;
@@ -68,8 +71,8 @@
   --background-color: #e7ecef;
   --section-background: #6f73d285;
   --section-secondary: #3446ff70;
-  --actions: #21fa90;
-  --actions-background: #21f37050;
+  --actions: #19e07f;
+  --actions-background: #21f37080;
   --popup-background: #2f32d240;
   --wave-color: #3446ff80;
   --logo-underline: #3446ff;

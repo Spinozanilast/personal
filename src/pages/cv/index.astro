@@ -1,0 +1,12 @@
+---
+import MarkdownLayout from "@layouts/MarkdownLayout.astro";
+import LanguageSelector from "@components/LanguageSelector.astro";
+import { Content, getHeadings } from "../../content/cv/cv-ru.mdx";
+---
+
+<MarkdownLayout title="CV" headings={getHeadings()}>
+  <div class="flex justify-end" slot="top-bar">
+    <LanguageSelector current="ru" />
+  </div>
+  <Content />
+</MarkdownLayout>
