@@ -9,7 +9,10 @@ import TelegramIcon from "@assets/icons/brands/telegram.svg";
 import EmailIcon from "@assets/icons/email.svg";
 import BookIcon from "@assets/icons/book.svg";
 import HomeIcon from "@assets/icons/home.svg";
+import CvIcon from "@assets/icons/cv.svg";
 import WaveAnimation from "@assets/wave_animation.svg";
+
+import PaperTouchAudioSrc from "@assets/audio/paper_touch.mp3";
 ---
 
 <script>
@@ -93,12 +96,21 @@ import WaveAnimation from "@assets/wave_animation.svg";
       class="bg-section-background container rounded-xl"
     >
       <Fragment slot="content">
-        <Reference title="Home" link="/home" separateTab={false}><HomeIcon /></Reference
+        <Reference title="Home" link="/home" separateTab={false} audioSrc=""
+          ><HomeIcon /></Reference
         >
-        <Reference title="Notes" link="/notes" separateTab={false}
-          ><BookIcon /></Reference
+        <Reference
+          audioSrc={PaperTouchAudioSrc}
+          title="Notes"
+          link="/notes"
+          separateTab={false}><BookIcon /></Reference
         >
-        <Reference title="CV" link="/cv" separateTab={false} />
+        <Reference
+          audioSrc={PaperTouchAudioSrc}
+          title="CV"
+          link="/cv"
+          separateTab={false}><CvIcon /></Reference
+        >
       </Fragment>
     </Section>
   </main>
@@ -142,7 +154,7 @@ import WaveAnimation from "@assets/wave_animation.svg";
       @apply px-4 py-5;
     }
 
-    @media (width <= 1100px) {
+    @media (width <= 1300px) {
       @apply flex-col;
     }
   }

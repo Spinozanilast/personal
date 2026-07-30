@@ -305,21 +305,21 @@ const { title, className } = Astro.props;
     @apply bg-section-background fixed top-2 right-2 z-40 flex w-fit items-center gap-2 place-self-end-safe rounded-xl p-1 pr-4 backdrop-blur-sm;
   }
 
+  @keyframes killer-smoking {
+    from {
+      background-position-x: 0px;
+    }
+    to {
+      background-position-x: -679px;
+    }
+  }
+
   footer {
     .killer {
       @apply absolute right-35 bottom-[5%] z-20 h-16 w-24.25 scale-300 md:bottom-[40%] md:scale-500;
       background-image: var(--killer-sheet);
       image-rendering: pixelated;
       animation: killer-smoking 5s steps(8, jump-none) infinite;
-    }
-
-    @keyframes killer-smoking {
-      from {
-        background-position-x: 0px;
-      }
-      to {
-        background-position-x: -679px;
-      }
     }
 
     .fire {

@@ -9,13 +9,22 @@ interface Props {
   description?: string;
   separateTab?: boolean;
   className?: string;
+  audioSrc?: string;
 }
 
-const { title, description, link, separateTab = true, className } = Astro.props;
+const {
+  title,
+  description,
+  link,
+  separateTab = true,
+  className,
+  audioSrc,
+} = Astro.props;
 ---
 
 <a
   class="reference-link text-foreground-accent-red font-departuremono text-dm-sm w-full min-w-1/3 font-medium focus:scale-[1.1]"
+  data-audioSrc={audioSrc}
   href={link}
   target={separateTab ? "_blank" : ""}
 >
@@ -37,6 +46,28 @@ const { title, description, link, separateTab = true, className } = Astro.props;
     <SquareBracket class="bracket-icon rotate-180" />
   </div>
 </a>
+
+<script>
+  import AudioPlayer from "@lib/audio.ts";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const referenceLinks =
+      document.querySelectorAll<HTMLAnchorElement>(".reference-link");
+
+    referenceLinks.forEach((link) => {
+      const audioSrc = link.dataset.audiosrc;
+
+      if (audioSrc && audioSrc?.length !== 0) {
+        AudioPlayer.createAudioPlayer(audioSrc);
+
+        link.addEventListener("mouseenter", () => {
+          console.log(audioSrc);
+          AudioPlayer.playAudio(audioSrc);
+        });
+      }
+    });
+  });
+</script>
 
 <style>
   @reference "../../global.css";
