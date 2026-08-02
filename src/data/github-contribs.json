@@ -1,60 +1,6 @@
 [
   [
     {
-      "date": "2026-06-24T00:00:00.000Z",
-      "level": 0,
-      "tooltipText": "No contributions on June 24th."
-    },
-    {
-      "date": "2026-06-25T00:00:00.000Z",
-      "level": 2,
-      "tooltipText": "2 contributions on June 25th."
-    },
-    {
-      "date": "2026-06-26T00:00:00.000Z",
-      "level": 2,
-      "tooltipText": "3 contributions on June 26th."
-    },
-    {
-      "date": "2026-06-27T00:00:00.000Z",
-      "level": 3,
-      "tooltipText": "4 contributions on June 27th."
-    },
-    {
-      "date": "2026-06-28T00:00:00.000Z",
-      "level": 2,
-      "tooltipText": "2 contributions on June 28th."
-    }
-  ],
-  [
-    {
-      "date": "2026-06-29T00:00:00.000Z",
-      "level": 4,
-      "tooltipText": "6 contributions on June 29th."
-    },
-    {
-      "date": "2026-06-30T00:00:00.000Z",
-      "level": 4,
-      "tooltipText": "6 contributions on June 30th."
-    },
-    {
-      "date": "2026-07-01T00:00:00.000Z",
-      "level": 0,
-      "tooltipText": "No contributions on July 1st."
-    },
-    {
-      "date": "2026-07-02T00:00:00.000Z",
-      "level": 1,
-      "tooltipText": "1 contribution on July 2nd."
-    },
-    {
-      "date": "2026-07-03T00:00:00.000Z",
-      "level": 2,
-      "tooltipText": "3 contributions on July 3rd."
-    }
-  ],
-  [
-    {
       "date": "2026-07-04T00:00:00.000Z",
       "level": 0,
       "tooltipText": "No contributions on July 4th."
@@ -157,8 +103,62 @@
     },
     {
       "date": "2026-07-23T00:00:00.000Z",
-      "level": 2,
-      "tooltipText": "3 contributions on July 23rd."
+      "level": 3,
+      "tooltipText": "4 contributions on July 23rd."
+    }
+  ],
+  [
+    {
+      "date": "2026-07-24T00:00:00.000Z",
+      "level": 1,
+      "tooltipText": "1 contribution on July 24th."
+    },
+    {
+      "date": "2026-07-25T00:00:00.000Z",
+      "level": 0,
+      "tooltipText": "No contributions on July 25th."
+    },
+    {
+      "date": "2026-07-26T00:00:00.000Z",
+      "level": 0,
+      "tooltipText": "No contributions on July 26th."
+    },
+    {
+      "date": "2026-07-27T00:00:00.000Z",
+      "level": 0,
+      "tooltipText": "No contributions on July 27th."
+    },
+    {
+      "date": "2026-07-28T00:00:00.000Z",
+      "level": 0,
+      "tooltipText": "No contributions on July 28th."
+    }
+  ],
+  [
+    {
+      "date": "2026-07-29T00:00:00.000Z",
+      "level": 0,
+      "tooltipText": "No contributions on July 29th."
+    },
+    {
+      "date": "2026-07-30T00:00:00.000Z",
+      "level": 1,
+      "tooltipText": "1 contribution on July 30th."
+    },
+    {
+      "date": "2026-07-31T00:00:00.000Z",
+      "level": 0,
+      "tooltipText": "No contributions on July 31st."
+    },
+    {
+      "date": "2026-08-01T00:00:00.000Z",
+      "level": 0,
+      "tooltipText": "No contributions on August 1st."
+    },
+    {
+      "date": "2026-08-02T00:00:00.000Z",
+      "level": 1,
+      "tooltipText": "1 contribution on August 2nd."
     }
   ]
 ]
