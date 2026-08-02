@@ -13,6 +13,8 @@ import CvIcon from "@assets/icons/cv.svg";
 import WaveAnimation from "@assets/wave_animation.svg";
 
 import PaperTouchAudioSrc from "@assets/audio/paper_touch.mp3";
+import DoorCreaksAudioSrc from "@assets/audio/door_creaks.mp3";
+import OpeningBookAudioSrc from "@assets/audio/opening_book.mp3";
 ---
 
 <script>
@@ -96,11 +98,14 @@ import PaperTouchAudioSrc from "@assets/audio/paper_touch.mp3";
       class="bg-section-background container rounded-xl"
     >
       <Fragment slot="content">
-        <Reference title="Home" link="/home" separateTab={false} audioSrc=""
-          ><HomeIcon /></Reference
+        <Reference
+          audioSrc={DoorCreaksAudioSrc}
+          title="Home"
+          link="/home"
+          separateTab={false}><HomeIcon /></Reference
         >
         <Reference
-          audioSrc={PaperTouchAudioSrc}
+          audioSrc={OpeningBookAudioSrc}
           title="Notes"
           link="/notes"
           separateTab={false}><BookIcon /></Reference

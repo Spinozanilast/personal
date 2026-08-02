@@ -1,38 +1,28 @@
 ---
 import RandomOrderMeta from "@assets/icons/keyboard_modes/random_order.png";
 import RainbowLightMeta from "@assets/icons/keyboard_modes/rainbow_light.png";
-
-type Props = {
-  showModesPanel?: boolean;
-};
-
-const { showModesPanel = true } = Astro.props;
 ---
 
 <div class="absolute h-dvh w-full">
-  {
-    showModesPanel && (
-      <div class="keyboard-modes-panel z-30">
-        <h1 class="-ml-6 w-full text-center text-xl md:hidden">Keyboard Light modes</h1>
-        <div class="flex gap-4">
-          <button class="push-button" data-mode="random">
-            <img
-              src={RandomOrderMeta.src}
-              class="w-[40%] rotate-90"
-              style="image-rendering:pixelated"
-            />
-          </button>
-          <button class="push-button active" data-mode="rainbow">
-            <img
-              src={RainbowLightMeta.src}
-              class="w-[40%] rotate-90"
-              style="image-rendering:pixelated"
-            />
-          </button>
-        </div>
-      </div>
-    )
-  }
+  <div class="keyboard-modes-panel z-30">
+    <h1 class="-ml-6 w-full text-center text-xl md:hidden">Keyboard Light modes</h1>
+    <div class="flex gap-4">
+      <button class="push-button" data-mode="random">
+        <img
+          src={RandomOrderMeta.src}
+          class="w-[40%] rotate-90"
+          style="image-rendering:pixelated"
+        />
+      </button>
+      <button class="push-button active" data-mode="rainbow">
+        <img
+          src={RainbowLightMeta.src}
+          class="w-[40%] rotate-90"
+          style="image-rendering:pixelated"
+        />
+      </button>
+    </div>
+  </div>
   <svg
     viewBox="0 0 395 375"
     xmlns="http://www.w3.org/2000/svg"
@@ -436,7 +426,7 @@ const { showModesPanel = true } = Astro.props;
   }
 
   .keyboard-modes-panel {
-    @apply border-accent absolute -right-33 bottom-80 flex translate-x-[-40%] rotate-270 transform flex-col items-center justify-center gap-4 overflow-hidden rounded-md border border-dashed p-3 md:right-20 xl:-bottom-1 xl:translate-x-[12%] xl:rotate-0 xl:pl-3;
+    @apply border-accent absolute right-0 bottom-80 hidden translate-x-[35%] rotate-270 transform flex-col items-center justify-center gap-4 overflow-hidden rounded-md border border-dashed p-3 md:right-1 md:flex xl:-bottom-1 xl:translate-x-[-101%] xl:rotate-0 xl:pl-3;
   }
 
   .push-button {
