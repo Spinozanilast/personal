@@ -4,10 +4,10 @@ import { cn } from "@lib/utils";
 import Popup from "@components/base/Popup.astro";
 
 type Props = {
-  buttonClass?: string;
+  buttonWrapperClass?: string;
 };
 
-const { buttonClass } = Astro.props as Props;
+const { buttonWrapperClass } = Astro.props as Props;
 ---
 
 <Popup
@@ -15,15 +15,14 @@ const { buttonClass } = Astro.props as Props;
   visibilities={[{ key: "skip-animation", visible: true }]}
   id="personality-popup"
 >
-  <button
-    class={cn(
-      "bg-util-icon-color text-primary-background font-pixelify h-10 w-10 cursor-pointer rounded-md p-1 font-bold hover:scale-105 hover:brightness-110 group",
-      buttonClass,
-    )}
-    slot="trigger"
-  >
-    <p class="group-hover:text-accent font-departuremono text-center text-2xl">?</p>
-  </button>
+  <div slot="trigger" class={cn("bg-section-background", buttonWrapperClass)}>
+    <button
+      class="bg-util-icon-color text-primary-background font-pixelify group h-10 w-10 cursor-pointer rounded-md p-1 font-bold hover:scale-105 hover:brightness-110"
+      ,
+    >
+      <p class="font-departuremono text-center text-2xl">?</p>
+    </button>
+  </div>
   <div slot="content" class="font-pixelify">
     <div
       class="content-text bg-popup-background flex flex-col overflow-y-hidden rounded-md p-[1em]"
@@ -99,7 +98,7 @@ const { buttonClass } = Astro.props as Props;
   }
 
   :global(span.colored) {
-    @apply text-foreground-accent-red;
+    @apply text-foreground-top-accent;
   }
 
   #about-button {
