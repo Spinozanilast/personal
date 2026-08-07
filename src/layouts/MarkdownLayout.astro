@@ -29,7 +29,7 @@ const { title, headings = [] } = Astro.props;
   </div>
 </HomeLayout>
 
-<style>
+<style is:global>
   @reference "../global.css";
 
   .toc-sidebar {
@@ -138,7 +138,7 @@ const { title, headings = [] } = Astro.props;
 
       td {
         @apply px-3 py-2;
-        border-bottom: 1px solid wavy var(--section-background);
+        border-bottom: 1px solid var(--section-secondary);
       }
 
       th,
@@ -162,7 +162,7 @@ const { title, headings = [] } = Astro.props;
     code {
       @apply rounded px-1.5 py-0.5 text-sm;
       background: var(--section-background);
-      color: var(--red-accent-color);
+      color: var(--top-accent-color);
     }
 
     pre {
