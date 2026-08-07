@@ -86,7 +86,7 @@ const { class: className, ...props } = Astro.props;
   .map-svg {
     @apply h-full w-full origin-[20%_60%] rounded-md transition-transform duration-1000 ease-in-out md:origin-[25%_60%];
     color: var(--color-accent);
-    filter: hue-rotate(var(--scroll-indicator-hue-rotate));
+    filter: hue-rotate(var(--theme-hue-rotate, 0deg)) var(--hue-filter-addition,);
   }
 
   .map-zoom-wrapper:hover .map-svg {

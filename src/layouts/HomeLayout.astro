@@ -4,6 +4,7 @@ import { Icon } from "astro-icon/components";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import ScrollIndicator from "@components/ScrollIndicator.astro";
 import DarkLightSwitcher from "@components/DarkLightSwitcher.astro";
+import ColorSwitcher from "@components/ColorSwitcher.astro";
 import PersonalityPopup from "@components/PersonalityPopup.astro";
 
 import fire from "@assets/sheets/fire.png";
@@ -66,12 +67,14 @@ const { title, className } = Astro.props;
     </nav>
     <div id="mobile-theme-wrapper">
       <DarkLightSwitcher />
+      <ColorSwitcher />
     </div>
   </div>
   <PersonalityPopup buttonClass="fixed top-2 left-2 z-40" />
   <div id="util-panel">
     <ScrollIndicator class="z-10 scale-75" />
     <DarkLightSwitcher />
+    <ColorSwitcher />
   </div>
   <main class={cn("mt-18 md:mt-30 h-fit", className)}>
     <slot />
@@ -245,9 +248,9 @@ const { title, className } = Astro.props;
   }
 
   div#snake-logo-nav {
-    @apply block h-16 w-12 scale-[0.8] hue-rotate-(--scroll-indicator-hue-rotate) transition-[scale];
+    @apply block h-16 w-12 scale-[0.8] hue-rotate-(--theme-hue-rotate) transition-[scale];
 
-    background-image: url(var(--snake-texture));
+    background-image: var(--snake-texture);
     background-repeat: no-repeat;
     background-size: 704px 64px;
     image-rendering: pixelated;
@@ -277,8 +280,9 @@ const { title, className } = Astro.props;
   }
 
   div#snake-logo {
-    @apply h-16 w-16 scale-[0.8] bg-size-[704px_64px] bg-no-repeat hue-rotate-(--scroll-indicator-hue-rotate) transition-[scale];
+    @apply h-16 w-16 scale-[0.8] bg-size-[704px_64px] bg-no-repeat hue-rotate-(--theme-hue-rotate) transition-[scale];
 
+    filter: hue-rotate(var(--theme-hue-rotate)) var(--hue-filter-addition,);
     background-image: var(--snake-texture);
     image-rendering: pixelated;
 
@@ -318,6 +322,7 @@ const { title, className } = Astro.props;
     .killer {
       @apply absolute right-35 bottom-[5%] z-20 h-16 w-24.25 scale-300 md:bottom-[40%] md:scale-500;
       background-image: var(--killer-sheet);
+      filter: var(--hue-filter-addition,);
       image-rendering: pixelated;
       animation: killer-smoking 5s steps(8, jump-none) infinite;
     }
@@ -415,7 +420,7 @@ const { title, className } = Astro.props;
     }
 
     #mobile-theme-wrapper {
-      @apply flex justify-end p-4 pt-0;
+      @apply flex items-center justify-end gap-2 p-4 pt-0;
     }
 
     #util-panel {

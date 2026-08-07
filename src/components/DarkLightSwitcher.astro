@@ -13,12 +13,12 @@ import darkLightToggleSheet from "@assets/sheets/dark_light_toggle.png";
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".theme-toggle").forEach((button) => {
       const animationDiv = button.querySelector(".dark-light-indicator");
-      const current = document.documentElement.getAttribute("data-theme");
+      const current = document.documentElement.getAttribute("data-theme") || "light";
 
-      animationDiv?.classList.add(current || "light");
+      animationDiv?.classList.add(current === "dark" ? "dark" : "light");
 
       button.addEventListener("click", () => {
-        const current = document.documentElement.getAttribute("data-theme");
+        const current = document.documentElement.getAttribute("data-theme") || "light";
         const next = current === "dark" ? "light" : "dark";
 
         document.documentElement.setAttribute("data-theme", next);
@@ -27,7 +27,7 @@ import darkLightToggleSheet from "@assets/sheets/dark_light_toggle.png";
           animationDiv?.classList.remove(current, "animated");
         }
 
-        animationDiv?.classList.add("animated", next || "light");
+        animationDiv?.classList.add("animated", next);
       });
     });
   });

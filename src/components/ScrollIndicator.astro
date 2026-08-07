@@ -177,7 +177,7 @@ const { class: className } = Astro.props;
     --animation-duration: 1s;
     --frames-number: 3;
 
-    filter: hue-rotate(var(--scroll-indicator-hue-rotate));
+    filter: hue-rotate(var(--theme-hue-rotate)) var(--hue-filter-addition,);
     background-image: var(--scroll-indicator-sheet);
     image-rendering: pixelated;
     width: calc(var(--start-dimension) * var(--scaling-factor));

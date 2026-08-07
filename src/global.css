@@ -2,7 +2,6 @@
 @import "tailwindcss/preflight.css" layer(base);
 @plugin "@tailwindcss/typography";
 
-
 @theme inline {
   /* Background Colors */
   --color-primary-background: var(--background-color);
@@ -66,87 +65,323 @@
   --text-dm-7xl: 121px;
 }
 
-:root {
+[data-color="orange"] {
   /* Background Colors */
-  --background-color: #e7ecef;
-  --section-background: #6f73d285;
-  --section-secondary: #3446ff70;
+  --background-color: #faf1e4;
+  --section-background: #ffb27a85;
+  --section-secondary: #ff7a1c70;
   --actions: #19e07f;
   --actions-background: #21f37080;
-  --popup-background: #2f32d240;
-  --wave-color: #3446ff80;
-  --logo-underline: #3446ff;
+  --popup-background: #ff9e3d40;
+  --wave-color: #ff7a1c80;
+  --logo-underline: #ff7a1c;
   --logo-stroke: #d0535380;
-  --util-icon-color: #0b3c8f;
-  --accent-color: #3446ff;
-  --util-panel-background: #6f73d275;
+  --util-icon-color: #c2410c;
+  --accent-color: #ff7a1c;
+  --util-panel-background: #ffb27a75;
 
   /* Paper Colors */
   --paper-background: #ffffff;
-  --paper-border: #aaa;
+  --paper-border: #888;
+  --paper-foreground: #1f1f1f;
 
-  --contrast-theme-background: var(--color-purple-300);
+  --contrast-theme-background: var(--color-orange-300);
 
   /* Github Stats levels colors */
-  --level-0: #9dd0fc;
-  --level-1: #64b5f6;
-  --level-2: #1e88e5;
-  --level-3: var(--color-purple-300);
-  --level-4: var(--color-purple-500);
+  --level-0: #ffe0b2;
+  --level-1: #ffb570;
+  --level-2: #f97316;
+  --level-3: var(--color-orange-400);
+  --level-4: var(--color-orange-600);
 
   --keyboard-push-button-background: var(--color-slate-800);
 
   /* Animations Durations */
   --standard-animation-duration: 1s;
 
-  --scroll-indicator-hue-rotate: 215deg;
+  --theme-hue-rotate: 30deg;
 
   /* Text Colors */
-  --text-color: #333333;
-  --red-accent-color: #ff2c20;
+  --text-color: #1f1f1f;
+  --red-accent-color: #ff7a1c;
   --blue-accent-color: #3446ff;
 
   /* Selection Colors */
   --selection-color: #d01cfb;
 }
 
-[data-theme="dark"] {
-  --background-color: #141013;
-  --section-background: #1f181d99;
-  --section-secondary: #ff2c2080;
+[data-theme="dark"][data-color="orange"] {
+  --background-color: #191009;
+  --section-background: #2a1a0f99;
+  --section-secondary: #ff8c3380;
   --actions: #ffca3a;
   --actions-background: #f2bb0550;
-  --popup-background: #19151650;
-  --wave-color: #5a0002;
-  --logo-underline: #ff2c20;
+  --popup-background: #19100950;
+  --wave-color: #5a2a0a;
+  --logo-underline: #ff8c33;
   --logo-stroke: #310000;
-  --util-icon-color: #b52d0e;
-  --util-panel-background: #541b1b;
-  --accent-color: #e90c00;
+  --util-icon-color: #ff8c33;
+  --util-panel-background: #2a1a0f;
+  --accent-color: #ff8c33;
   --contrast-theme-background: var(--color-amber-500);
 
   /* Paper Colors */
   --paper-background: #444444;
   --paper-border: #555;
+  --paper-foreground: white;
 
   /* Github Stats levels colors */
+  --level-0: #331a0a;
+  --level-1: #7a3b12;
+  --level-2: #c2500e;
+  --level-3: #ea580c;
+  --level-4: #ff8c33;
+
+  --keyboard-push-button-background: var(--color-gray-800);
+
+  --theme-hue-rotate: 30deg;
+
+  /* Text Colors */
+  --text-color: white;
+  --red-accent-color: #ff8c33;
+  --blue-accent-color: #5a7bff;
+
+  /* Selection Colors */
+  --selection-color: #d01cfb;
+}
+
+[data-color="red"] {
+  --background-color: #fff5f5;
+  --section-background: #fda4af99;
+  --section-secondary: #e11d4880;
+  --popup-background: #e11d4859;
+  --wave-color: #e11d4880;
+  --logo-underline: #e11d48;
+  --util-icon-color: #9f1239;
+  --accent-color: #e11d48;
+  --util-panel-background: #fda4af99;
+  --paper-border: #888;
+  --contrast-theme-background: var(--color-red-400);
+  --level-0: #ffe4e6;
+  --level-1: #fda4af;
+  --level-2: #f43f5e;
+  --level-3: var(--color-red-600);
+  --level-4: var(--color-red-800);
+  --theme-hue-rotate: 0deg;
+  --text-color: #1f1f1f;
+  --red-accent-color: #e11d48;
+  --blue-accent-color: #3446ff;
+}
+
+[data-theme="dark"][data-color="red"] {
+  --background-color: #141013;
+  --section-background: #1f181d99;
+  --section-secondary: #ff2c2080;
+  --popup-background: #19151650;
+  --wave-color: #5a0002;
+  --logo-underline: #ff2c20;
+  --util-icon-color: #b52d0e;
+  --util-panel-background: #541b1b;
+  --accent-color: #e90c00;
+  --contrast-theme-background: var(--color-amber-500);
   --level-0: #321323;
   --level-1: #6a040f;
   --level-2: #dc2f02;
   --level-3: #f48c06;
   --level-4: #ffba08;
-
-  --keyboard-push-button-background: var(--color-gray-800);
-
-  --scroll-indicator-hue-rotate: 0;
-
-  /* Text Colors */
+  --theme-hue-rotate: 0;
   --text-color: white;
   --red-accent-color: #e90c00;
-  --blue-accent-color: #3446ff;
+  --blue-accent-color: #5a7bff;
+}
 
-  /* Selection Colors */
-  --selection-color: #d01cfb;
+[data-color="green"] {
+  --background-color: #f2faf3;
+  --section-background: #86efac99;
+  --section-secondary: #15803d80;
+  --popup-background: #15803d59;
+  --wave-color: #15803d80;
+  --logo-underline: #15803d;
+  --util-icon-color: #14532d;
+  --accent-color: #15803d;
+  --util-panel-background: #86efac99;
+  --paper-border: #888;
+  --contrast-theme-background: var(--color-green-400);
+  --level-0: #dcfce7;
+  --level-1: #86efac;
+  --level-2: #22c55e;
+  --level-3: var(--color-green-600);
+  --level-4: var(--color-green-800);
+  --theme-hue-rotate: 130deg;
+  --text-color: #1f1f1f;
+  --red-accent-color: #15803d;
+  --blue-accent-color: #e8590c;
+}
+
+[data-theme="dark"][data-color="green"] {
+  --background-color: #0d130d;
+  --section-background: #12201299;
+  --section-secondary: #4ade8080;
+  --popup-background: #0d130d50;
+  --wave-color: #062e16;
+  --logo-underline: #4ade80;
+  --util-icon-color: #4ade80;
+  --util-panel-background: #122012;
+  --accent-color: #4ade80;
+  --contrast-theme-background: var(--color-green-500);
+  --level-0: #0c2616;
+  --level-1: #14532d;
+  --level-2: #16a34a;
+  --level-3: #22c55e;
+  --level-4: #4ade80;
+  --theme-hue-rotate: 130deg;
+  --text-color: white;
+  --red-accent-color: #4ade80;
+  --blue-accent-color: #ff8c33;
+}
+
+[data-color="purple"] {
+  --background-color: #f6f4ff;
+  --section-background: #c4b5fd99;
+  --section-secondary: #6d28d980;
+  --popup-background: #6d28d959;
+  --wave-color: #6d28d980;
+  --logo-underline: #6d28d9;
+  --util-icon-color: #5b21b6;
+  --accent-color: #6d28d9;
+  --util-panel-background: #c4b5fd99;
+  --paper-border: #888;
+  --contrast-theme-background: var(--color-violet-400);
+  --level-0: #ede9fe;
+  --level-1: #c4b5fd;
+  --level-2: #8b5cf6;
+  --level-3: var(--color-violet-600);
+  --level-4: var(--color-violet-800);
+  --theme-hue-rotate: 270deg;
+  --text-color: #1f1f1f;
+  --red-accent-color: #6d28d9;
+  --blue-accent-color: #e8590c;
+}
+
+[data-theme="dark"][data-color="purple"] {
+  --background-color: #120f1a;
+  --section-background: #1c172699;
+  --section-secondary: #a78bfa80;
+  --popup-background: #120f1a50;
+  --wave-color: #2a1040;
+  --logo-underline: #a78bfa;
+  --util-icon-color: #a78bfa;
+  --util-panel-background: #1c1726;
+  --accent-color: #a78bfa;
+  --contrast-theme-background: var(--color-violet-500);
+  --level-0: #241a38;
+  --level-1: #4c1d95;
+  --level-2: #7c3aed;
+  --level-3: #8b5cf6;
+  --level-4: #a78bfa;
+  --theme-hue-rotate: 270deg;
+  --text-color: white;
+  --red-accent-color: #a78bfa;
+  --blue-accent-color: #ff8c33;
+}
+
+[data-color="blue"] {
+  --background-color: #f4f7ff;
+  --section-background: #93c5fd99;
+  --section-secondary: #1d4ed880;
+  --popup-background: #1d4ed859;
+  --wave-color: #1d4ed880;
+  --logo-underline: #1d4ed8;
+  --util-icon-color: #1e3a8a;
+  --accent-color: #1d4ed8;
+  --util-panel-background: #93c5fd99;
+  --paper-border: #888;
+  --contrast-theme-background: var(--color-blue-400);
+  --level-0: #dbeafe;
+  --level-1: #93c5fd;
+  --level-2: #3b82f6;
+  --level-3: var(--color-blue-600);
+  --level-4: var(--color-blue-800);
+  --theme-hue-rotate: 215deg;
+  --text-color: #1f1f1f;
+  --red-accent-color: #1d4ed8;
+  --blue-accent-color: #e8590c;
+}
+
+[data-theme="dark"][data-color="blue"] {
+  --background-color: #0d1220;
+  --section-background: #16203a99;
+  --section-secondary: #60a5fa80;
+  --popup-background: #0d122050;
+  --wave-color: #0b1e4d;
+  --logo-underline: #60a5fa;
+  --util-icon-color: #60a5fa;
+  --util-panel-background: #16203a;
+  --accent-color: #60a5fa;
+  --contrast-theme-background: var(--color-blue-500);
+  --level-0: #1b2a52;
+  --level-1: #1e3a8a;
+  --level-2: #2563eb;
+  --level-3: #3b82f6;
+  --level-4: #60a5fa;
+  --theme-hue-rotate: 215deg;
+  --text-color: white;
+  --red-accent-color: #60a5fa;
+  --blue-accent-color: #ff8c33;
+}
+
+[data-color="black"] {
+  --background-color: #f2f2f2;
+  --section-background: #d4d4d499;
+  --section-secondary: #00000033;
+  --popup-background: #0000001a;
+  --wave-color: #55555580;
+  --logo-underline: #111111;
+  --logo-stroke: #d0535380;
+  --util-icon-color: #333333;
+  --accent-color: #111111;
+  --util-panel-background: #d4d4d4;
+  --paper-background: #ffffff;
+  --paper-border: #999;
+  --contrast-theme-background: #c0c0c0;
+  --level-0: #e0e0e0;
+  --level-1: #b0b0b0;
+  --level-2: #808080;
+  --level-3: #505050;
+  --level-4: #111111;
+  --theme-hue-rotate: 0deg;
+  --hue-filter-addition: grayscale(1) brightness(0.5);
+  --text-color: #1a1a1a;
+  --red-accent-color: #111111;
+  --blue-accent-color: #555555;
+}
+
+[data-theme="dark"][data-color="black"] {
+  --background-color: #000000;
+  --section-background: #11111199;
+  --section-secondary: #ffffff40;
+  --popup-background: #00000050;
+  --wave-color: #000000;
+  --logo-underline: #ffffff;
+  --logo-stroke: #000000;
+  --util-icon-color: #d4d4d4;
+  --util-panel-background: #0a0a0a;
+  --accent-color: #ffffff;
+  --contrast-theme-background: #333333;
+  --level-0: #111111;
+  --level-1: #222222;
+  --level-2: #333333;
+  --level-3: #555555;
+  --level-4: #ffffff;
+  --theme-hue-rotate: 0deg;
+  --hue-filter-addition: brightness(1.5) grayscale(1);
+  --text-color: #ffffff;
+  --red-accent-color: #ffffff;
+  --blue-accent-color: #aaaaaa;
+
+  --paper-background: #f2f2f2;
+  --paper-border: #999;
+  --paper-foreground: #111111;
 }
 
 /* --- Shiki / Code Block Syntax Highlighting --- */

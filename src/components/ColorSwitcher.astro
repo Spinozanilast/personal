@@ -1,0 +1,122 @@
+<button
+  class="color-toggle bg-util-icon-color flex h-10 w-10 cursor-pointer items-center justify-center rounded-md p-1 hover:scale-105 hover:brightness-110"
+  title="theme color"
+  aria-label="Theme color selector"
+>
+  <span class="preview-symbol">♦</span>
+  <div class="variants-wrapper">
+    <p class="text-dm-xs font-departuremono text-left">Choose theme color accent:</p>
+    <div class="colors-variants-selector"></div>
+  </div>
+</button>
+
+<script>
+  const COLORS = ["orange", "red", "green", "purple", "blue", "black"];
+  const PREFERRED_COLOR = "red";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const root = document.documentElement;
+
+    const savedColor = localStorage.getItem("theme-accent") || "red";
+    const currentColor = savedColor;
+
+    const styles = getComputedStyle(root);
+
+    const COLORS_MAP = Object.fromEntries(
+      COLORS.map((color) => {
+        root.setAttribute("data-color", color);
+        return [color, styles.getPropertyValue("--accent-color").trim()];
+      }),
+    );
+
+    root.setAttribute("data-color", currentColor);
+
+    document.querySelectorAll(".color-toggle").forEach((button) => {
+      const colorsVariantsSelector = button.querySelector(".colors-variants-selector");
+
+      const select = (color: (typeof COLORS)[number]) => {
+        colorsVariantsSelector!
+          .querySelectorAll(".color-variant")
+          .forEach((variant) => {
+            variant.classList.toggle(
+              "current-one",
+              variant.getAttribute("data-color") === color,
+            );
+          });
+      };
+
+      Object.entries(COLORS_MAP).forEach(([color, accent]) => {
+        const colorVarButton = document.createElement("button");
+        colorVarButton.setAttribute("data-color", color);
+        colorVarButton.classList.add("color-variant", color);
+        colorVarButton.style.color = accent;
+        colorVarButton.textContent = "♦";
+
+        if (color === PREFERRED_COLOR) {
+          colorVarButton.classList.add("key-one");
+        }
+        colorVarButton.addEventListener("click", () => {
+          localStorage.setItem("theme-accent", color);
+          root.setAttribute("data-color", color);
+          select(color);
+        });
+
+        colorsVariantsSelector!.append(colorVarButton);
+      });
+
+      select(currentColor);
+    });
+  });
+</script>
+
+<style is:global>
+  @reference "../global.css";
+
+  .color-toggle {
+    @apply relative;
+
+    .preview-symbol {
+      @apply text-accent text-shadow-primary-background font-departuremono text-dm-base text-shadow-md;
+    }
+
+    .variants-wrapper {
+      @apply bg-util-panel-background shadow-accent fixed top-10 right-0 z-100 hidden min-w-fit flex-col gap-1 rounded-md p-2;
+
+      .colors-variants-selector {
+        @apply flex w-fit gap-2;
+
+        .color-variant {
+          @apply bg-accent font-departuremono text-dm-sm w-fit cursor-pointer rounded-xs px-3 py-1 text-shadow-md;
+
+          &.key-one {
+            @apply m-1 scale-110 rounded-sm outline-3 outline-yellow-500;
+          }
+
+          &.current-one {
+            @apply m-2 scale-125;
+            outline: 2px solid var(--accent-color);
+            outline-offset: 1px;
+
+            &.key-one {
+              @apply outline-3 outline-yellow-500;
+            }
+          }
+        }
+      }
+    }
+
+    &:hover {
+      .preview-symbol {
+        display: none;
+      }
+
+      &::before {
+        @apply text-foreground font-departuremono text-dm-sm content-['↴'] text-shadow-md;
+      }
+
+      .variants-wrapper {
+        @apply flex w-fit;
+      }
+    }
+  }
+</style>
