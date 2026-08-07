@@ -1,0 +1,47 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  actions: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - name: Delete deployment
+        uses: strumwolf/delete-deployment-environment@v4
+        with:
+          token: ${{ secrets.WORKFLOW_TOKEN }}
+          environment: github-pages
+          onlyRemoveDeployments: true
+  build:
+    env:
+      CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+      CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+      REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v6
+      - name: Install, build, and upload your site
+        uses: withastro/action@v6
+      - run: touch dist/.nojekyll
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
