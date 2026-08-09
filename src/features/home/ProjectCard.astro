@@ -11,12 +11,12 @@ interface Props {
   detailed?: boolean;
 }
 
-const { project, className, detailed = false } = Astro.props;
+const { project, className, detailed = true } = Astro.props;
 ---
 
 <div
   class={cn(
-    "project bg-section-background relative w-full rounded-lg p-4 shadow-lg",
+    "project bg-section-background backdrop-blur-sm relative w-full rounded-lg p-4 shadow-lg",
     className,
   )}
 >
@@ -39,13 +39,19 @@ const { project, className, detailed = false } = Astro.props;
         {project.tagline} · {project.year}
       </p>
     </div>
-    <div class="bg-section-secondary/10 flex justify-center p-4">
+    <div
+      class="bg-section-secondary/10 m-2 flex h-fit items-center justify-center p-4 md:h-40"
+    >
       <img src={project.logoLink} alt={project.title} class="h-fit" />
     </div>
     <p class="text-foreground font-departuremono text-dm-xs leading-relaxed">
       {detailed ? project.details : project.description}
     </p>
     <div class="mt-auto flex flex-wrap items-center gap-2 pt-1">
+      <div
+        class="text-accent font-departuremono prose-img:max-h-10 prose-a:relative mb-2 flex w-full items-center justify-center gap-4 text-base"
+        set:html={project.bannerHtml}
+      />
       <div class="flex flex-wrap gap-1.5">
         {
           project.tech.map((tech) => (
@@ -55,15 +61,32 @@ const { project, className, detailed = false } = Astro.props;
           ))
         }
       </div>
-      <a
-        href={project.link}
-        target="_blank"
-        class="link arrow text-accent font-departuremono text-dm-sm hover:text-accent relative ml-auto flex items-center gap-1 font-bold"
-        aria-label={`${project.title} on GitHub`}
-      >
-        <GithubIcon class="h-5 w-5 fill-current" />
-        Repo
-      </a>
+      <div class="prose-a:relative ml-auto flex items-center gap-2">
+        <a
+          href={project.link}
+          target="_blank"
+          class="link arrow text-accent font-bold"
+          aria-label={`${project.title} on GitHub`}
+        >
+          <GithubIcon class="h-5 w-5 fill-current" />
+          Repo
+        </a>
+        {
+          project.siteLink && (
+            <>
+              <p class="text-accent text-dm-base">|</p>
+              <a
+                href={project.siteLink}
+                target="_blank"
+                class="link arrow text-accent font-bold"
+                aria-label={`${project.title} Site`}
+              >
+                Site
+              </a>
+            </>
+          )
+        }
+      </div>
     </div>
   </div>
 </div>

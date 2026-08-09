@@ -3,7 +3,7 @@ import RandomOrderMeta from "@assets/icons/keyboard_modes/random_order.png";
 import RainbowLightMeta from "@assets/icons/keyboard_modes/rainbow_light.png";
 ---
 
-<div class="absolute h-dvh w-full">
+<div class="w-full">
   <div class="keyboard-modes-panel z-30">
     <h1 class="-ml-6 w-full text-center text-xl md:hidden">Keyboard Light modes</h1>
     <div class="flex gap-4">
@@ -418,40 +418,6 @@ import RainbowLightMeta from "@assets/icons/keyboard_modes/rainbow_light.png";
   </svg>
 </div>
 
-<style>
-  @reference "../../global.css";
-
-  .symbol::selection {
-    background: none;
-  }
-
-  .keyboard-modes-panel {
-    @apply border-accent absolute right-0 bottom-80 hidden translate-x-[35%] rotate-270 transform flex-col items-center justify-center gap-4 overflow-hidden rounded-md border border-dashed p-3 md:right-1 md:flex xl:-bottom-1 xl:translate-x-[-101%] xl:rotate-0 xl:pl-3;
-  }
-
-  .push-button {
-    @apply bg-keyboard-push-button-background flex h-15 w-20 cursor-pointer items-baseline justify-center pt-1.5;
-    box-shadow:
-      0 5px 0 #444,
-      0 8px 12px rgba(0, 0, 0, 0.4);
-    transition: all 0.1s ease;
-
-    &:hover {
-      @apply bg-gray-600;
-      box-shadow:
-        0 4px 0 #333,
-        0 6px 10px rgba(0, 0, 0, 0.4);
-    }
-
-    &.active {
-      @apply translate-y-1.5 bg-gray-700;
-      box-shadow:
-        0 1px 0 #333,
-        0 2px 4px rgba(0, 0, 0, 0.4);
-    }
-  }
-</style>
-
 <script>
   import AudioPlayer from "@lib/audio.ts";
   import PushButtonAudioSrc from "@assets/audio/push_button_press.mp3";
@@ -578,3 +544,37 @@ import RainbowLightMeta from "@assets/icons/keyboard_modes/rainbow_light.png";
     if (btn) animateButton(btn as SVGRectElement);
   });
 </script>
+
+<style>
+  @reference "../../global.css";
+
+  .symbol::selection {
+    background: none;
+  }
+
+  .keyboard-modes-panel {
+    @apply border-accent absolute right-0 bottom-80 hidden translate-x-[35%] rotate-270 transform flex-col items-center justify-center gap-4 overflow-hidden rounded-md border border-dashed p-3 md:right-1 md:flex xl:-bottom-1 xl:translate-x-[-101%] xl:rotate-0 xl:pl-3;
+  }
+
+  .push-button {
+    @apply bg-keyboard-push-button-background flex h-15 w-20 cursor-pointer items-baseline justify-center pt-1.5;
+    box-shadow:
+      0 5px 0 #444,
+      0 8px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.1s ease;
+
+    &:hover {
+      @apply bg-gray-600;
+      box-shadow:
+        0 4px 0 #333,
+        0 6px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    &.active {
+      @apply translate-y-1.5 bg-gray-700;
+      box-shadow:
+        0 1px 0 #333,
+        0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+  }
+</style>

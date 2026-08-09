@@ -7,7 +7,9 @@ export interface Project {
   tech: string[];
   link: string;
   logoLink: string;
+  bannerHtml: string;
   year: string;
+  siteLink?: string;
 }
 
 export const projects: Project[] = [
@@ -22,6 +24,10 @@ export const projects: Project[] = [
     link: "https://github.com/Spinozanilast/Flow.Launcher.Plugin.AppsSnapshoter",
     logoLink:
       "https://raw.githubusercontent.com/Spinozanilast/Flow.Launcher.Plugin.AppsSnapshoter/refs/heads/master/snapshot.png",
+    bannerHtml: `
+        <h1>Plugin for</h1>
+        <a href="https://www.flowlauncher.com" target="_blank" class="link arrow"><img src="https://www.flowlauncher.com/_astro/logo.0UvRGS8B_2rd06f.avif" alt="Flow launcher icon" /></a>
+      `,
     year: "2024",
   },
   {
@@ -35,6 +41,29 @@ export const projects: Project[] = [
     link: "https://github.com/Spinozanilast/aseprite-assets-cli",
     logoLink:
       "https://raw.githubusercontent.com/Spinozanilast/aseprite-assets-cli/master/www/static/logo128.png",
+    bannerHtml: `
+        <h1>Export helper for Aseprite</h1>
+        <a href="https://www.aseprite.org" target="_blank" class="link arrow"><img src="https://raw.githubusercontent.com/aseprite/aseprite/refs/heads/main/data/icons/ase128.png" alt="Aseprite icon" /></a>
+      `,
     year: "2025",
+  },
+  {
+    index: 3,
+    title: "Wikie",
+    tagline: "wikie",
+    description:
+      "Browser extension that gets you the wiki resources you need on gaming pages fast.",
+    details:
+      "A web extension that surfaces the wiki resources you need on the gaming pages you visit. It adds Wikipedia and SteamDB badges to Steam store and SteamDB app pages, supports independent wikis, syncs its theme with your browser, and lets you pin the panel to any corner of the screen.",
+    tech: ["TypeScript", "React", "WXT"],
+    link: "https://github.com/Spinozanilast/wikie",
+    logoLink:
+      "https://raw.githubusercontent.com/Spinozanilast/wikie/main/public/icon/128.png",
+    bannerHtml: `
+        <h1>Extension for</h1>
+        <a href="https://store.steampowered.com" target="_blank" class="link arrow"><img src="https://store.steampowered.com/favicon.ico" alt="Steam icon" /></a>
+      `,
+    year: "2026",
+    siteLink: "https://wikie-website.vercel.app",
   },
 ];

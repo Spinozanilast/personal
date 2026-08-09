@@ -3,16 +3,15 @@ import { cn } from "@lib/utils";
 
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"section">;
+interface Props extends HTMLAttributes<"section"> {
+  contentWrapperClass?: string;
+}
 
-const { title, class: className, ...attrs } = Astro.props;
+const { title, class: className, contentWrapperClass, ...attrs } = Astro.props;
 ---
 
 <section
-  class={cn(
-    "relative flex h-dvh max-h-dvh w-full min-w-full flex-col snap-start",
-    className,
-  )}
+  class={cn("relative flex h-dvh max-h-dvh w-full min-w-full flex-col", className)}
   {...attrs}
 >
   <div
@@ -25,7 +24,7 @@ const { title, class: className, ...attrs } = Astro.props;
     </h1>
     <slot name="title-extra" />
   </div>
-  <div class="relative z-10 m-4 h-full">
+  <div class={cn("relative z-10 m-4 min-h-0 flex-1", contentWrapperClass)}>
     <slot />
   </div>
   <slot name="after-content" />

@@ -144,41 +144,46 @@ import LeftHand from "@assets/arts/left_hand_of_two.svg";
         </div>
       </div>
     </section>
-    <div id="horizontal-snap-container" class="relative h-[200vh]">
-      <div class="sticky top-0 h-screen overflow-hidden">
-        <div id="horizontal-snap-content" class="flex snap-y snap-mandatory">
-          <SectionWithTitle id="projects" title="/ Projects">
-            <div
-              class="top-projects relative grid h-full w-full grid-cols-1 grid-rows-3 gap-4 md:grid-cols-3 md:grid-rows-1"
+    <SectionWithTitle
+      id="projects"
+      class="h-fit max-h-none min-h-dvh"
+      contentWrapperClass="inline-grid"
+      title="/ Projects"
+    >
+      <div
+        class="top-projects relative grid h-full w-full grid-cols-1 grid-rows-3 gap-4 md:grid-cols-3 md:grid-rows-1"
+      >
+        {projects.slice(0, 2).map((project) => <ProjectCard project={project} />)}
+        <a
+          href="/projects"
+          class="project bg-section-background relative flex w-full items-center justify-center rounded-lg p-4 shadow-lg transition-transform hover:scale-[1.02]"
+        >
+          <h1
+            class="idx font-extrude text-dm-7xl text-accent absolute -top-4 -left-2 italic"
+          >
+            +
+          </h1>
+          <div class="flex flex-col items-center gap-2 pt-8 text-center">
+            <h2
+              class="text-foreground font-departuremono text-dm-sm font-bold opacity-70"
             >
-              {projects.map((project) => <ProjectCard project={project} />)}
-              <a
-                href="/projects"
-                class="project bg-section-background relative flex w-full items-center justify-center rounded-lg p-4 shadow-lg transition-transform hover:scale-[1.02]"
-              >
-                <h1
-                  class="idx font-extrude text-dm-7xl text-accent absolute -top-4 -left-2 italic"
-                >
-                  +
-                </h1>
-                <div class="flex flex-col items-center gap-2 pt-8 text-center">
-                  <h2 class="text-accent font-departuremono text-dm-sm font-bold">
-                    And a lot more
-                  </h2>
-                  <p class="text-foreground font-departuremono text-dm-xs opacity-60">
-                    writing code, making art
-                  </p>
-                  <span
-                    class="text-accent font-departuremono text-dm-xs underline underline-offset-2"
-                  >
-                    /projects
-                  </span>
-                </div>
-              </a>
-            </div>
-            <Keyboard slot="after-content" />
-          </SectionWithTitle>
-          <SectionWithTitle id="art" title="/ Art">
+              And a lot more writing code
+            </h2>
+            <p class="text-foreground font-departuremono text-dm-xs opacity-60"></p>
+            <span
+              class="text-accent font-departuremono text-dm-xs underline underline-offset-2"
+            >
+              /projects
+            </span>
+          </div>
+        </a>
+      </div>
+      <Keyboard slot="after-content" />
+    </SectionWithTitle>
+    <div id="horizontal-snap-container" class="relative" style="height: 200vh">
+      <div class="sticky top-0 overflow-visible">
+        <div id="horizontal-snap-content" class="flex h-fit snap-y snap-mandatory">
+          <SectionWithTitle id="art" class="snap-start" title="/ Art">
             <LeftHand
               class="fill-accent absolute top-[50%] left-0 w-[47%] translate-y-[-50%]"
               slot="after-content"
@@ -188,29 +193,33 @@ import LeftHand from "@assets/arts/left_hand_of_two.svg";
               slot="after-content"
             />
           </SectionWithTitle>
+          <SectionWithTitle
+            class="h-fit max-h-none snap-end"
+            id="about"
+            title="/ About"
+          >
+            <div
+              class="bento flex h-full w-full grid-cols-5 grid-rows-3 flex-col place-items-center gap-3 md:grid"
+            >
+              <div class="col-span-2 flex h-full w-full items-center justify-center">
+                <SpotifyNowPlayingWidget client:load />
+              </div>
+              <div
+                class="col-span-3 row-span-3 flex h-auto w-full items-center justify-center md:h-full"
+              >
+                <CountryWidget />
+              </div>
+              <div class="col-span-2 h-full w-full">
+                <GithubStats />
+              </div>
+              <div class="col-span-2 h-full">
+                <TimeWidget />
+              </div>
+            </div>
+          </SectionWithTitle>
         </div>
       </div>
     </div>
-    <SectionWithTitle class="h-fit max-h-none" id="about" title="/ About">
-      <div
-        class="bento flex h-full w-full grid-cols-5 grid-rows-3 flex-col place-items-center gap-3 p-2 md:grid"
-      >
-        <div class="col-span-2 flex h-full w-full items-center justify-center">
-          <SpotifyNowPlayingWidget client:load />
-        </div>
-        <div
-          class="col-span-3 row-span-3 flex h-auto w-full items-center justify-center md:h-full"
-        >
-          <CountryWidget />
-        </div>
-        <div class="col-span-2 h-full w-full">
-          <GithubStats />
-        </div>
-        <div class="col-span-2 h-full">
-          <TimeWidget />
-        </div>
-      </div>
-    </SectionWithTitle>
   </div>
 </HomeLayout>
 
@@ -231,6 +240,22 @@ import LeftHand from "@assets/arts/left_hand_of_two.svg";
       Section Scroll Animation
   */
 
+  const snapContent = document.querySelector("#horizontal-snap-content") as HTMLElement;
+  const snapContainer = document.querySelector(
+    "#horizontal-snap-container",
+  ) as HTMLElement;
+
+  const updateSnapContainerHeight = () => {
+    if (!snapContent || !snapContainer) return;
+    snapContainer.style.height = `${snapContent.offsetHeight + window.innerHeight}px`;
+  };
+
+  updateSnapContainerHeight();
+
+  const snapResizeObserver = new ResizeObserver(updateSnapContainerHeight);
+  snapResizeObserver.observe(snapContent);
+  window.addEventListener("resize", updateSnapContainerHeight);
+
   const sections = document.querySelectorAll("#horizontal-snap-container section");
 
   scroll(
@@ -238,7 +263,8 @@ import LeftHand from "@assets/arts/left_hand_of_two.svg";
       transform: ["translateX(0)", `translateX(-${sections.length - 1}00vw)`],
     }),
     {
-      target: document.querySelector("#horizontal-snap-container") as HTMLElement,
+      target: snapContainer,
+      offset: ["start start", "start -100vh"],
     },
   );
 
