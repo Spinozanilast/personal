@@ -15,17 +15,31 @@ const { title, headings = [] } = Astro.props;
   className="flex w-full flex-col items-center justify-self-center px-4"
 >
   <slot name="top-bar" />
-  <div class="relative flex w-full flex-row justify-center py-4">
-    <div class="markdown-content flex w-full flex-col justify-center md:w-1/2">
-      <slot />
-    </div>
+  <div
+    class="relative flex w-full flex-col items-center justify-center py-4 md:flex-row-reverse"
+  >
     {
       headings.length > 0 && (
         <aside class="toc-sidebar">
+          <div class="markdown-content text-accent">
+            <h5 class="hidden md:block">
+              <i>Table of Contents</i>
+            </h5>
+            <h1 class="block md:hidden">
+              <i>Table of Contents</i>
+            </h1>
+            <hr />
+          </div>
           <TableOfContents headings={headings} client:load />
+          <div class="markdown-content text-accent">
+            <hr />
+          </div>
         </aside>
       )
     }
+    <div class="markdown-content flex w-full flex-col justify-center md:w-1/2">
+      <slot />
+    </div>
   </div>
 </HomeLayout>
 
@@ -33,19 +47,19 @@ const { title, headings = [] } = Astro.props;
   @reference "../global.css";
 
   .toc-sidebar {
-    position: sticky;
-    top: 20rem;
-    align-self: flex-start;
-    margin-left: 2rem;
-    max-height: calc(100vh - 8rem);
-    overflow-y: auto;
-    width: 12rem;
-    flex-shrink: 0;
+    @apply prose-a:text-dm-sm md:prose-a:text-dm-xs mb-8 w-full shrink-0;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 769px) {
     .toc-sidebar {
-      display: none;
+      position: sticky;
+      top: 20rem;
+      align-self: flex-start;
+      margin-left: 2rem;
+      margin-bottom: 0;
+      max-height: calc(100vh - 8rem);
+      overflow-y: auto;
+      width: 12rem;
     }
   }
 

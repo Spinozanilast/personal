@@ -1,5 +1,15 @@
 import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { extendTailwindMerge } from "tailwind-merge";
+
+const isDepartureMonoSize = (value: string) => value.startsWith("dm-");
+
+const twMerge = extendTailwindMerge({
+  extend: {
+    classGroups: {
+      "font-size": [{ text: [isDepartureMonoSize] }],
+    },
+  },
+});
 
 /* Utility types */
 export type Position = "top" | "bottom" | "left" | "right";

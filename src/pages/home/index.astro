@@ -4,9 +4,12 @@ import { Image } from "astro:assets";
 import HomeLayout from "@layouts/HomeLayout.astro";
 
 import SectionWithTitle from "@features/home/SectionWithTitle.astro";
+import ProjectCard from "@features/home/ProjectCard.astro";
 import CharacterDialogWrapper from "@features/home/CharacterDialogWrapper.astro";
 import RemCylinder from "@features/home/RemCylinder.astro";
 import Keyboard from "@features/home/Keyboard.astro";
+
+import { projects } from "@data/projects";
 import GithubStats from "@features/home/GithubStats.astro";
 import CountryWidget from "@features/home/CountryWidget.astro";
 import TimeWidget from "@features/home/TimeWidget.astro";
@@ -37,9 +40,9 @@ import LeftHand from "@assets/arts/left_hand_of_two.svg";
   <div id="sections-wrapper" class="hidden">
     <section
       id="paper"
-      class="flex h-fit max-h-fit min-h-dvh flex-row flex-wrap items-center justify-center gap-10 p-6"
+      class="flex h-fit max-h-fit min-h-[calc(100vh-7rem)] flex-row flex-wrap items-center justify-center gap-10 p-6"
     >
-      <div class="mx-4 flex max-w-400 flex-col items-center md:flex-row">
+      <div class="mx-4 flex max-w-400 flex-col items-center gap-6 p-10 md:flex-row">
         <div
           id="about-self-paper"
           class="front-side bg-paper-background font-retrogression border-paper-border relative m-5 mt-10 min-h-140 w-full max-w-225 border-2 p-4 md:w-1/2"
@@ -148,33 +151,30 @@ import LeftHand from "@assets/arts/left_hand_of_two.svg";
             <div
               class="top-projects relative grid h-full w-full grid-cols-1 grid-rows-3 gap-4 md:grid-cols-3 md:grid-rows-1"
             >
-              <div
-                class="project bg-section-background relative w-full rounded-lg p-4 shadow-lg"
+              {projects.map((project) => <ProjectCard project={project} />)}
+              <a
+                href="/projects"
+                class="project bg-section-background relative flex w-full items-center justify-center rounded-lg p-4 shadow-lg transition-transform hover:scale-[1.02]"
               >
                 <h1
                   class="idx font-extrude text-dm-7xl text-accent absolute -top-4 -left-2 italic"
                 >
-                  1
+                  +
                 </h1>
-              </div>
-              <div
-                class="project bg-section-background relative w-full rounded-lg p-4 shadow-lg"
-              >
-                <h1
-                  class="idx font-extrude text-dm-7xl text-accent absolute -top-4 -left-2 italic"
-                >
-                  2
-                </h1>
-              </div>
-              <div
-                class="project bg-section-background relative w-full rounded-lg p-4 shadow-lg"
-              >
-                <h1
-                  class="idx font-extrude text-dm-7xl text-accent absolute -top-4 -left-2 italic"
-                >
-                  3
-                </h1>
-              </div>
+                <div class="flex flex-col items-center gap-2 pt-8 text-center">
+                  <h2 class="text-accent font-departuremono text-dm-sm font-bold">
+                    And a lot more
+                  </h2>
+                  <p class="text-foreground font-departuremono text-dm-xs opacity-60">
+                    writing code, making art
+                  </p>
+                  <span
+                    class="text-accent font-departuremono text-dm-xs underline underline-offset-2"
+                  >
+                    /projects
+                  </span>
+                </div>
+              </a>
             </div>
             <Keyboard slot="after-content" />
           </SectionWithTitle>

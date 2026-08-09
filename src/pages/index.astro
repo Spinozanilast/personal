@@ -64,26 +64,15 @@ import OpeningBookAudioSrc from "@assets/audio/opening_book.mp3";
       bigIconTitleModeEnabled
     >
       <Fragment slot="content">
-        <a
-          href="https://github.com/spinozanilast"
-          class="fill-foreground-top-accent text-dm-sm font-departuremono decoration-accent flex h-[7em] flex-col items-center text-center font-medium decoration-3 underline-offset-1 hover:underline hover:[&_svg]:scale-110"
-          target="_blank"
-        >
+        <a href="https://github.com/spinozanilast" class="link" target="_blank">
           <GithubIcon />
           <span class="block">Github</span>
         </a>
-        <a
-          href="https://t.me/spinozanilast"
-          class="fill-foreground-top-accent text-dm-sm font-departuremono decoration-accent flex h-[7em] flex-col items-center text-center font-medium decoration-3 underline-offset-1 hover:underline hover:[&_svg]:scale-110"
-          target="_blank"
-        >
+        <a href="https://t.me/spinozanilast" class="link" target="_blank">
           <TelegramIcon />
           <span class="block">Telegram</span>
         </a>
-        <a
-          href="mailto:spinozanilast@proton.me"
-          class="fill-foreground-top-accent text-dm-sm font-departuremono decoration-accent flex h-[7em] flex-col items-center text-center font-medium decoration-3 underline-offset-1 hover:underline hover:[&_svg]:scale-110"
-        >
+        <a href="mailto:spinozanilast@proton.me" class="link">
           <EmailIcon />
           <span class="block">Email</span>
         </a>
@@ -153,7 +142,7 @@ import OpeningBookAudioSrc from "@assets/audio/opening_book.mp3";
   }
 
   section#navigation.container {
-    @apply flex flex-row items-center justify-center gap-2 px-20 py-10;
+    @apply flex flex-row items-center justify-center gap-2 px-20 py-6;
 
     @media (width <= 700px) {
       @apply px-4 py-5;
@@ -184,15 +173,11 @@ import OpeningBookAudioSrc from "@assets/audio/opening_book.mp3";
         @apply h-34 w-34;
       }
     }
-
-    section#references {
-      @apply mt-[1em];
-    }
   }
 
   @media (width <= 500px) {
     section#navigation.container {
-      @apply flex flex-row items-center justify-center px-4 py-5;
+      @apply flex flex-col items-center justify-center px-4 py-1;
     }
   }
 </style>

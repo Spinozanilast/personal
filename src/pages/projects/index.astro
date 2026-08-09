@@ -1,5 +1,47 @@
 ---
 import HomeLayout from "@layouts/HomeLayout.astro";
+
+import ProjectCard from "@features/home/ProjectCard.astro";
+
+import GithubIcon from "@assets/icons/brands/github.svg";
+
+import { projects } from "@data/projects";
 ---
 
-<HomeLayout title="Projects" />
+<HomeLayout title="Projects">
+  <section class="mx-auto max-w-280 p-6 md:p-10">
+    <div
+      class="bg-contrast-theme-background relative z-1 flex h-fit w-full items-center gap-6 p-1 pl-5"
+    >
+      <h1
+        class="text-accent font-departuremono lg:text-dm-7xl text-dm-xl md:text-dm-3xl w-fit text-center font-bold tracking-tight text-nowrap italic transition-all hover:tracking-normal"
+      >
+        / Projects
+      </h1>
+    </div>
+    <p
+      class="text-foreground font-departuremono text-dm-xs mt-6 w-full leading-relaxed text-balance"
+    >
+      Some things I've been building between writing code, writing stuff and making art.
+      For everything else there is {" "}
+      <a
+        class="text-accent underline underline-offset-2"
+        href="https://github.com/Spinozanilast"
+        target="_blank"
+      >
+        GitHub
+      </a>.
+    </p>
+    <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+      {projects.map((project) => <ProjectCard project={project} detailed />)}
+    </div>
+    <a
+      href="https://github.com/Spinozanilast"
+      target="_blank"
+      class="text-accent font-departuremono text-dm-sm mt-8 flex w-fit items-center gap-2 font-bold underline-offset-2 hover:underline"
+    >
+      <GithubIcon class="h-8 w-8 fill-current" />
+      More on GitHub
+    </a>
+  </section>
+</HomeLayout>

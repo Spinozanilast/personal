@@ -70,7 +70,9 @@ const { title, className } = Astro.props;
       <ColorSwitcher />
     </div>
   </div>
-  <PersonalityPopup buttonWrapperClass="fixed top-2 left-2 z-40 rounded-md p-5" />
+  <PersonalityPopup
+    buttonWrapperClass="fixed top-2 left-2 z-40 rounded-md md:p-5 md:border-accent/20 md:border-2"
+  />
   <div id="util-panel">
     <ScrollIndicator class="z-10 scale-75" />
     <DarkLightSwitcher />
@@ -306,7 +308,7 @@ const { title, className } = Astro.props;
   }
 
   #util-panel {
-    @apply bg-section-background fixed top-2 right-2 z-40 flex w-fit items-center gap-2 place-self-end-safe rounded-xl p-2 pr-4 backdrop-blur-sm;
+    @apply bg-section-background border-accent/20 fixed top-2 right-2 z-40 flex w-fit items-center gap-2 place-self-end-safe rounded-xl border-2 p-2 pr-4 backdrop-blur-sm;
   }
 
   @keyframes killer-smoking {
@@ -356,12 +358,7 @@ const { title, className } = Astro.props;
     }
   }
 
-  .link.arrow:hover::after {
-    @apply text-accent font-departuremono text-dm-sm absolute -top-4 -right-4;
-    content: "↗";
-  }
-
-  @media (width < 1030px) {
+  @media (width < 1200px) {
     #hamburger {
       @apply text-accent fixed top-2 right-2 z-50 block cursor-pointer place-self-end self-center p-2 text-3xl;
     }

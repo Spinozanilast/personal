@@ -163,7 +163,12 @@
   --util-icon-color: #9f1239;
   --accent-color: #e11d48;
   --util-panel-background: #fda4af99;
+
+  /* Paper Colors */
+  --paper-background: #ffffff;
   --paper-border: #888;
+  --paper-foreground: #1f1f1f;
+
   --contrast-theme-background: var(--color-red-400);
   --level-0: #ffe4e6;
   --level-1: #fda4af;
@@ -188,6 +193,12 @@
   --logo-stroke: #1f0000;
   --util-icon-color: #b52d0e;
   --util-panel-background: #541b1b;
+
+  /* Paper Colors */
+  --paper-background: #444444;
+  --paper-border: #555;
+  --paper-foreground: white;
+
   --accent-color: #e90c00;
   --contrast-theme-background: var(--color-amber-500);
   --level-0: #321323;
@@ -214,6 +225,12 @@
   --util-icon-color: #14532d;
   --accent-color: #15803d;
   --util-panel-background: #86efac99;
+
+  /* Paper Colors */
+  --paper-background: #ffffff;
+  --paper-border: #888;
+  --paper-foreground: #1f1f1f;
+
   --paper-border: #888;
   --contrast-theme-background: var(--color-green-400);
   --level-0: #dcfce7;
@@ -239,6 +256,12 @@
   --logo-stroke: #03170c;
   --util-icon-color: #4ade80;
   --util-panel-background: #122012;
+
+  /* Paper Colors */
+  --paper-background: #444444;
+  --paper-border: #555;
+  --paper-foreground: white;
+
   --accent-color: #4ade80;
   --contrast-theme-background: var(--color-green-500);
   --level-0: #0c2616;
@@ -265,6 +288,12 @@
   --util-icon-color: #5b21b6;
   --accent-color: #6d28d9;
   --util-panel-background: #c4b5fd99;
+
+  /* Paper Colors */
+  --paper-background: #ffffff;
+  --paper-border: #888;
+  --paper-foreground: #1f1f1f;
+
   --paper-border: #888;
   --contrast-theme-background: var(--color-violet-400);
   --level-0: #ede9fe;
@@ -290,6 +319,12 @@
   --logo-stroke: #170d28;
   --util-icon-color: #a78bfa;
   --util-panel-background: #1c1726;
+
+  /* Paper Colors */
+  --paper-background: #444444;
+  --paper-border: #555;
+  --paper-foreground: white;
+
   --accent-color: #a78bfa;
   --contrast-theme-background: var(--color-violet-500);
   --level-0: #241a38;
@@ -316,6 +351,12 @@
   --util-icon-color: #1e3a8a;
   --accent-color: #1d4ed8;
   --util-panel-background: #93c5fd99;
+
+  /* Paper Colors */
+  --paper-background: #ffffff;
+  --paper-border: #888;
+  --paper-foreground: #1f1f1f;
+
   --paper-border: #888;
   --contrast-theme-background: var(--color-blue-400);
   --level-0: #dbeafe;
@@ -341,6 +382,12 @@
   --logo-stroke: #081329;
   --util-icon-color: #60a5fa;
   --util-panel-background: #16203a;
+
+  /* Paper Colors */
+  --paper-background: #444444;
+  --paper-border: #555;
+  --paper-foreground: white;
+
   --accent-color: #60a5fa;
   --contrast-theme-background: var(--color-blue-500);
   --level-0: #1b2a52;
@@ -367,6 +414,12 @@
   --util-icon-color: #333333;
   --accent-color: #111111;
   --util-panel-background: #d4d4d4;
+
+  /* Paper Colors */
+  --paper-background: #ffffff;
+  --paper-border: #888;
+  --paper-foreground: #1f1f1f;
+
   --paper-background: #ffffff;
   --paper-border: #999;
   --contrast-theme-background: #c0c0c0;
@@ -394,6 +447,12 @@
   --logo-stroke: #444444;
   --util-icon-color: #777777;
   --util-panel-background: #333333;
+
+  /* Paper Colors */
+  --paper-background: #444444;
+  --paper-border: #555;
+  --paper-foreground: white;
+
   --accent-color: #ffffff;
   --contrast-theme-background: #333333;
   --level-0: #111111;
@@ -451,6 +510,19 @@
   --astro-code-token-string-expression: #7ee787;
   --astro-code-token-punctuation: #848d97;
   --astro-code-token-link: #79c0ff;
+}
+
+.link.arrow:hover::after {
+  @apply text-accent font-departuremono text-dm-sm absolute -top-4 -right-4;
+  content: "↗";
+
+  &.small {
+    @apply text-dm-xs;
+  }
+}
+
+#links .link {
+  @apply fill-foreground-top-accent text-dm-sm font-departuremono decoration-accent flex h-28 flex-col items-center text-center font-medium decoration-3 underline-offset-1 hover:underline md:h-[7em] hover:[&_svg]:scale-110;
 }
 
 html,

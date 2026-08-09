@@ -1,0 +1,69 @@
+---
+import { cn } from "@lib/utils";
+
+import type { Project } from "@data/projects";
+
+import GithubIcon from "@assets/icons/brands/github.svg";
+
+interface Props {
+  project: Project;
+  className?: string;
+  detailed?: boolean;
+}
+
+const { project, className, detailed = false } = Astro.props;
+---
+
+<div
+  class={cn(
+    "project bg-section-background relative w-full rounded-lg p-4 shadow-lg",
+    className,
+  )}
+>
+  <h1 class="idx font-extrude text-dm-7xl text-accent absolute -top-4 -left-2 italic">
+    {project.index}
+  </h1>
+  <div class="flex h-full flex-col gap-3">
+    <div class="mb-4 flex flex-col items-end pl-10 text-right">
+      <h2
+        class={cn(
+          "text-accent font-departuremono font-bold",
+          detailed ? "text-dm-base" : "text-dm-sm",
+        )}
+      >
+        {project.title}
+      </h2>
+      <p
+        class="text-foreground font-departuremono text-dm-xs mt-1 font-bold opacity-60"
+      >
+        {project.tagline} · {project.year}
+      </p>
+    </div>
+    <div class="bg-section-secondary/10 flex justify-center p-4">
+      <img src={project.logoLink} alt={project.title} class="h-fit" />
+    </div>
+    <p class="text-foreground font-departuremono text-dm-xs leading-relaxed">
+      {detailed ? project.details : project.description}
+    </p>
+    <div class="mt-auto flex flex-wrap items-center gap-2 pt-1">
+      <div class="flex flex-wrap gap-1.5">
+        {
+          project.tech.map((tech) => (
+            <span class="border-accent/30 text-accent font-pixelify rounded-md border px-1.5 py-0.5 text-xs font-bold">
+              {tech}
+            </span>
+          ))
+        }
+      </div>
+      <a
+        href={project.link}
+        target="_blank"
+        class="link arrow text-accent font-departuremono text-dm-sm hover:text-accent relative ml-auto flex items-center gap-1 font-bold"
+        aria-label={`${project.title} on GitHub`}
+      >
+        <GithubIcon class="h-5 w-5 fill-current" />
+        Repo
+      </a>
+    </div>
+  </div>
+</div>
