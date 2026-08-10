@@ -4,12 +4,11 @@ import { Image } from "astro:assets";
 import HomeLayout from "@layouts/HomeLayout.astro";
 
 import SectionWithTitle from "@features/home/SectionWithTitle.astro";
-import ProjectCard from "@features/home/ProjectCard.astro";
+import ProjectCard from "@features/projects/ProjectCard.astro";
 import CharacterDialogWrapper from "@features/home/CharacterDialogWrapper.astro";
 import RemCylinder from "@features/home/RemCylinder.astro";
 import Keyboard from "@features/home/Keyboard.astro";
 
-import { projects } from "@data/projects";
 import GithubStats from "@features/home/GithubStats.astro";
 import CountryWidget from "@features/home/CountryWidget.astro";
 import TimeWidget from "@features/home/TimeWidget.astro";
@@ -20,6 +19,9 @@ import SpotifyNowPlayingWidget from "@/features/home/SpotifyNowPlayingWidget";
 import FoldedPaperCorner from "@assets/folded_paper_corner.png";
 import RotateBehind from "@assets/icons/actions/rotate_behind.svg";
 import LeftHand from "@assets/arts/left_hand_of_two.svg";
+
+import { projects } from "@data/projects";
+import { Icon } from "astro-icon/components";
 ---
 
 <HomeLayout title="Home">
@@ -199,20 +201,27 @@ import LeftHand from "@assets/arts/left_hand_of_two.svg";
             title="/ About"
           >
             <div
-              class="bento flex h-full w-full grid-cols-5 grid-rows-3 flex-col place-items-center gap-3 md:grid"
+              class="bento flex size-full grid-cols-5 grid-rows-3 flex-col place-items-center gap-3 md:grid"
             >
-              <div class="col-span-2 flex h-full w-full items-center justify-center">
+              <div class="col-span-2 flex items-center justify-center">
                 <SpotifyNowPlayingWidget client:load />
               </div>
               <div
-                class="col-span-3 row-span-3 flex h-auto w-full items-center justify-center md:h-full"
+                class="col-span-3 row-span-3 flex items-center justify-center md:h-full"
               >
                 <CountryWidget />
               </div>
-              <div class="col-span-2 h-full w-full">
+              <div>
                 <GithubStats />
               </div>
-              <div class="col-span-2 h-full">
+              <a
+                class="link text-accent border-accent relative flex items-center justify-center transition-[scale] duration-500 hover:scale-95 hover:border-2 hover:border-solid"
+                href="/cv"
+              >
+                <Icon name="cv" class="size-30" />
+                <p>CV</p>
+              </a>
+              <div class="col-span-2">
                 <TimeWidget />
               </div>
             </div>
@@ -511,8 +520,8 @@ import LeftHand from "@assets/arts/left_hand_of_two.svg";
   }
 
   .bento {
-    > div {
-      @apply bg-section-background relative w-full rounded-md p-4;
+    > * {
+      @apply bg-section-background relative size-full rounded-md p-4;
     }
   }
 </style>

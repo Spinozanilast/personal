@@ -1,0 +1,30 @@
+---
+import { cn } from "@lib/utils";
+
+type Props = {
+  title: string;
+  classes?: {
+    container?: string;
+    title?: string;
+  };
+};
+
+const { title, classes } = Astro.props;
+---
+
+<div
+  class={cn(
+    "bg-contrast-theme-background relative z-1 flex h-fit items-center gap-10 p-1 pl-5",
+    classes?.container,
+  )}
+>
+  <h1
+    class={cn(
+      "text-accent font-departuremono lg:text-dm-7xl text-dm-base md:text-dm-3xl w-fit text-center font-bold tracking-tight text-nowrap italic transition-all hover:tracking-normal",
+      classes?.title,
+    )}
+  >
+    {title}
+  </h1>
+  <slot name="title-extra" />
+</div>

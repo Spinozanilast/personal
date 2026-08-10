@@ -1,4 +1,5 @@
 ---
+import HeaderLine from "@components/HeaderLine.astro";
 import { cn } from "@lib/utils";
 
 import type { HTMLAttributes } from "astro/types";
@@ -14,16 +15,7 @@ const { title, class: className, contentWrapperClass, ...attrs } = Astro.props;
   class={cn("relative flex h-dvh max-h-dvh w-full min-w-full flex-col", className)}
   {...attrs}
 >
-  <div
-    class="bg-contrast-theme-background relative z-1 flex h-fit w-[101%] items-center gap-10 p-1 pl-5"
-  >
-    <h1
-      class="text-accent font-departuremono lg:text-dm-7xl text-dm-xl md:text-dm-3xl w-fit text-center font-bold tracking-tight text-nowrap italic transition-all hover:tracking-normal"
-    >
-      {title}
-    </h1>
-    <slot name="title-extra" />
-  </div>
+  <HeaderLine title={title ?? ""} classes={{ container: "w-[101%]" }} />
   <div class={cn("relative z-10 m-4 min-h-0 flex-1", contentWrapperClass)}>
     <slot />
   </div>

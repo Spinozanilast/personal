@@ -7,7 +7,7 @@ export default function RightHand({ className, ...props }: Props) {
     <pre
       {...props}
       id="ascii-right-hand"
-      className={`font-departuremono tracking-[0.2em] ${className ?? ""}`}
+      className={`font-departuremono overflow-hidden tracking-[0.2em] ${className ?? ""}`}
     >
       {`                                                                                                                    ###############
                                                                                                                #####%%
