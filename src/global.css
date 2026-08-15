@@ -63,6 +63,8 @@
   --text-dm-5xl: 99px;
   --text-dm-6xl: 110px;
   --text-dm-7xl: 121px;
+
+  --breakpoint-3xl: 120rem;
 }
 
 [data-color="orange"] {
@@ -512,17 +514,23 @@
   --astro-code-token-link: #79c0ff;
 }
 
-.link.arrow:hover::after {
-  @apply text-accent font-departuremono text-dm-sm absolute -top-4 -right-4;
-  content: "↗";
+@layer components {
+  .link.arrow:hover::after {
+    @apply text-accent font-departuremono text-dm-sm absolute -top-4 -right-4;
+    content: "↗";
 
-  &.small {
-    @apply text-dm-xs;
+    &.small {
+      @apply text-dm-xs;
+    }
   }
-}
 
-.link {
-  @apply fill-foreground-top-accent text-dm-sm font-departuremono decoration-accent flex items-center text-center font-medium decoration-3 underline-offset-1 hover:underline hover:[&_svg]:scale-110;
+  .link {
+    @apply fill-foreground-top-accent text-dm-sm font-departuremono decoration-accent flex items-center text-center font-medium decoration-3 underline-offset-1 hover:underline hover:[&_svg]:scale-110;
+  }
+
+  .wave-animation {
+    @apply fill-wave-color absolute top-0 left-0 z-0 h-fit;
+  }
 }
 
 html,

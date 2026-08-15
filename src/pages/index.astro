@@ -31,7 +31,7 @@ import OpeningBookAudioSrc from "@assets/audio/opening_book.mp3";
 
 <Layout title="Welcome">
   <main class="flex flex-col items-center justify-center pb-20 md:pb-0">
-    <WaveAnimation id="wave-animation" />
+    <WaveAnimation class="wave-animation" />
     <section id="nickname">
       <h1
         id="nickname-self"
@@ -112,10 +112,6 @@ import OpeningBookAudioSrc from "@assets/audio/opening_book.mp3";
 
 <style>
   @reference "../global.css";
-
-  #wave-animation {
-    @apply fill-wave-color absolute top-0 left-0 z-0 h-fit;
-  }
 
   main > section:not(:first-of-type) {
     @apply my-2.5 max-w-3/4 min-w-3/4 md:min-h-[25vh];

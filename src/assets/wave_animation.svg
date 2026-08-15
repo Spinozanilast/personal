@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-     width="128"
-     height="32"
+     width="100%"
      viewBox="0 0 128 32"
      shape-rendering="crispEdges">
     <text x="50%"
