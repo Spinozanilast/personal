@@ -12,6 +12,9 @@ interface Props {
 }
 
 const { project, className, detailed = true } = Astro.props;
+
+const renderDetails = (text: string) =>
+  text.replace(/\*\*(.+?)\*\*/g, '<strong class="font-bold text-accent">$1</strong>');
 ---
 
 <div
@@ -44,13 +47,14 @@ const { project, className, detailed = true } = Astro.props;
       set:html={project.topBannerHtml}
     />
     <div
-      class="bg-section-secondary/10 m-2 flex h-fit items-center justify-center p-4 md:h-40"
+      class="bg-section-secondary/10 flex h-fit items-center justify-center rounded-md p-4 md:h-40"
     >
       <img src={project.logoLink} alt={project.title} class="h-fit" />
     </div>
-    <p class="text-foreground font-manrope leading-relaxed">
-      {detailed ? project.details : project.description}
-    </p>
+    <p
+      class="text-foreground font-departuremono first-letter:bg-accent first-letter:text-primary-background text-justify text-sm leading-relaxed font-bold hyphens-auto first-letter:float-left first-letter:mt-1 first-letter:mr-2 first-letter:p-1 first-letter:px-2 first-letter:text-3xl first-letter:leading-none"
+      set:html={renderDetails(project.details)}
+    />
     <div class="mt-auto flex flex-wrap items-center gap-2 pt-1">
       <div
         class="text-accent font-departuremono prose-img:max-h-10 prose-a:relative mb-2 flex w-full items-center justify-center gap-4 text-base"

@@ -2,7 +2,7 @@
 import Layout from "@/layouts/BaseLayout.astro";
 
 import Reference from "@features/welcome/Reference.astro";
-import Section from "@features/welcome/SectionWithBG.astro";
+import SectionWithBackground from "@features/welcome/SectionWithBackground.astro";
 
 import GithubIcon from "@assets/icons/brands/github.svg";
 import TelegramIcon from "@assets/icons/brands/telegram.svg";
@@ -29,7 +29,7 @@ import OpeningBookAudioSrc from "@assets/audio/opening_book.mp3";
   });
 </script>
 
-<Layout title="Welcome">
+<Layout title="Welcome" classNames={{ body: "content-center" }}>
   <main class="flex flex-col items-center justify-center pb-20 md:pb-0">
     <WaveAnimation class="wave-animation" />
     <section id="nickname">
@@ -56,57 +56,48 @@ import OpeningBookAudioSrc from "@assets/audio/opening_book.mp3";
       >
       </div>
     </section>
-    <Section
+    <SectionWithBackground
       title="Links"
       class="bg-section-background rounded-xl"
       iconName={"link"}
       enableTitleOnBackground
-      bigIconTitleModeEnabled
     >
-      <Fragment slot="content">
-        <a href="https://github.com/spinozanilast" class="link" target="_blank">
-          <GithubIcon />
-          <span class="block">Github</span>
-        </a>
-        <a href="https://t.me/spinozanilast" class="link" target="_blank">
-          <TelegramIcon />
-          <span class="block">Telegram</span>
-        </a>
-        <a href="mailto:spinozanilast@proton.me" class="link">
-          <EmailIcon />
-          <span class="block">Email</span>
-        </a>
-      </Fragment>
-    </Section>
-    <Section
+      <a href="https://github.com/spinozanilast" class="link" target="_blank">
+        <GithubIcon />
+        <span class="block">Github</span>
+      </a>
+      <a href="https://t.me/spinozanilast" class="link" target="_blank">
+        <TelegramIcon />
+        <span class="block">Telegram</span>
+      </a>
+      <a href="mailto:spinozanilast@proton.me" class="link">
+        <EmailIcon />
+        <span class="block">Email</span>
+      </a>
+    </SectionWithBackground>
+    <SectionWithBackground
       id="navigation"
       title="Navigation"
       iconName="navigation"
       enableTitleOnBackground
-      bigIconTitleModeEnabled
       class="bg-section-background container rounded-xl"
     >
-      <Fragment slot="content">
-        <Reference
-          audioSrc={DoorCreaksAudioSrc}
-          title="Home"
-          link="/home"
-          separateTab={false}><HomeIcon /></Reference
-        >
-        <Reference
-          audioSrc={OpeningBookAudioSrc}
-          title="Notes"
-          link="/notes"
-          separateTab={false}><BookIcon /></Reference
-        >
-        <Reference
-          audioSrc={PaperTouchAudioSrc}
-          title="CV"
-          link="/cv"
-          separateTab={false}><CvIcon /></Reference
-        >
-      </Fragment>
-    </Section>
+      <Reference
+        audioSrc={DoorCreaksAudioSrc}
+        title="Home"
+        link="/home"
+        separateTab={false}><HomeIcon /></Reference
+      >
+      <Reference
+        audioSrc={OpeningBookAudioSrc}
+        title="Notes"
+        link="/notes"
+        separateTab={false}><BookIcon /></Reference
+      >
+      <Reference audioSrc={PaperTouchAudioSrc} title="CV" link="/cv" separateTab={false}
+        ><CvIcon /></Reference
+      >
+    </SectionWithBackground>
   </main>
 </Layout>
 
@@ -138,18 +129,22 @@ import OpeningBookAudioSrc from "@assets/audio/opening_book.mp3";
   }
 
   section#navigation.container {
-    @apply flex flex-row items-center justify-center gap-2 px-20 py-6;
+    @apply flex flex-row items-center justify-center gap-2 px-20;
 
     @media (width <= 700px) {
-      @apply px-4 py-5;
+      @apply px-4 py-4;
     }
 
-    @media (width <= 1300px) {
+    @media (width <= 1450px) {
       @apply flex-col;
+    }
+
+    @media (width <= 500px) {
+      @apply flex flex-col items-center justify-center px-4;
     }
   }
 
-  svg {
+  svg:not(.wave-animation) {
     @apply h-full w-full;
   }
 
@@ -168,12 +163,6 @@ import OpeningBookAudioSrc from "@assets/audio/opening_book.mp3";
       > a {
         @apply h-34 w-34;
       }
-    }
-  }
-
-  @media (width <= 500px) {
-    section#navigation.container {
-      @apply flex flex-col items-center justify-center px-4 py-1;
     }
   }
 

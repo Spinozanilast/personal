@@ -2,7 +2,6 @@ export interface Project {
   index: number;
   title: string;
   tagline: string;
-  description: string;
   details: string;
   tech: string[];
   link: string;
@@ -18,9 +17,8 @@ export const projects: Project[] = [
     index: 1,
     title: "Flow Launcher Plugin",
     tagline: "AppsSnapshoter",
-    description: "Snapshot currently open apps and launch them all later.",
     details:
-      "A Flow Launcher plugin that captures your currently running (windowed) apps into named snapshots, so you can restore your whole working setup later in a couple of keystrokes. Snapshots can be listed, renamed, removed, and apps inside them can be replaced or blocked from ever being snapshotted again.",
+      "A Flow Launcher plugin that captures your currently running (windowed) apps into **named snapshots**, so you can restore your whole **working setup** later in a couple of **keystrokes**. Snapshots can be listed, renamed, removed, and apps inside them can be replaced or blocked from ever being snapshotted again.",
     tech: ["C#", "WPF", "Flow Launcher"],
     link: "https://github.com/Spinozanilast/Flow.Launcher.Plugin.AppsSnapshoter",
     logoLink:
@@ -35,9 +33,8 @@ export const projects: Project[] = [
     index: 2,
     title: "Aseprite Assets CLI",
     tagline: "aseprite-assets-cli",
-    description: "Manage Aseprite sprites and palettes from the terminal via TUI.",
     details:
-      "A Go CLI for a better experience with Aseprite assets. List existing sprites and palettes, create new ones, preview them right in the terminal, and export them by format or template path with optional scales or sizes. Flags are interchangeable with interactive surveys.",
+      "A Go CLI for a better experience with Aseprite assets. List existing **sprites** and **palettes**, create new ones, **preview them right in the terminal**, and export them by format or template path with optional scales or sizes. Flags are interchangeable with **interactive surveys**.",
     tech: ["Go", "Cobra", "Viper"],
     link: "https://github.com/Spinozanilast/aseprite-assets-cli",
     logoLink:
@@ -52,10 +49,8 @@ export const projects: Project[] = [
     index: 3,
     title: "Wikie",
     tagline: "wikie",
-    description:
-      "Browser extension that gets you the wiki resources you need on gaming pages fast.",
     details:
-      "A web extension that surfaces the wiki resources you need on the gaming pages you visit. It adds Wikipedia and SteamDB badges to Steam store and SteamDB app pages, supports independent wikis, syncs its theme with your browser, and lets you pin the panel to any corner of the screen.",
+      "A web extension that surfaces the **wiki resources** you need on the gaming pages you visit. It adds **Wikipedia** and **SteamDB** badges to Steam store and SteamDB app pages, supports independent wikis, syncs its theme with your browser, and lets you **pin the panel** to any corner of the screen.",
     tech: ["TypeScript", "React", "WXT"],
     link: "https://github.com/Spinozanilast/wikie",
     logoLink:
@@ -64,7 +59,7 @@ export const projects: Project[] = [
       <img src="https://raw.githubusercontent.com/Spinozanilast/wikie/refs/heads/main/.github/assets/banner.jpg" alt="Wikie banner image" />
       `,
     bottomBannerHtml: `
-        <h1>Extension for</h1>
+        <h1>Browser extension for</h1>
         <a href="https://store.steampowered.com" target="_blank" class="link arrow"><img src="https://store.steampowered.com/favicon.ico" alt="Steam icon" /></a>
       `,
     year: "2026",

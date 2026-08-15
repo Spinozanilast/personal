@@ -9,11 +9,15 @@ import { Font } from "astro:assets";
 import "@/global.css";
 
 type Props = {
+  classNames?: {
+    body?: string;
+  };
   title?: string;
   renderUtilitiesPanel?: boolean;
 };
 
-const { title, renderUtilitiesPanel = true } = Astro.props;
+const { classNames, title, renderUtilitiesPanel = true } = Astro.props;
+
 const defaultTitle = "Spinozanilast's Diary";
 const fullTitle = title ? `${title} — ${defaultTitle}` : defaultTitle;
 const description =
@@ -67,7 +71,7 @@ const description =
     <Font cssVariable="--font-manrope" preload />
   </head>
 </html>
-<body>
+<body class={classNames?.body}>
   {
     renderUtilitiesPanel && (
       <div class="bg-section-background rounded-xsl absolute top-1.5 right-1.5 z-10 flex flex-row gap-2 p-2">
