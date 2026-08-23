@@ -1,5 +1,5 @@
 import { defineConfig, fontProviders } from "astro/config";
-import { satteri, satteriHeadingIdsPlugin } from '@astrojs/markdown-satteri';
+import { satteri, satteriHeadingIdsPlugin } from "@astrojs/markdown-satteri";
 import react from "@astrojs/react";
 
 import tailwindcss from "@tailwindcss/vite";
@@ -13,17 +13,19 @@ export default defineConfig({
   base: "/",
   markdown: {
     processor: satteri({
-          hastPlugins: [
-            satteriHeadingIdsPlugin(),
-          ],
-        }),
+      hastPlugins: [satteriHeadingIdsPlugin()],
+    }),
     shikiConfig: {
       theme: "css-variables",
     },
   },
-  integrations: [react(), icon({
-    iconDir: "src/assets/icons",
-  }), mdx()],
+  integrations: [
+    react(),
+    icon({
+      iconDir: "src/assets/icons",
+    }),
+    mdx(),
+  ],
   vite: {
     plugins: [tailwindcss()],
     server: {
@@ -105,6 +107,21 @@ export default defineConfig({
             weight: "100 900",
             style: "normal",
             src: ["./src/assets/fonts/Manrope.woff2"],
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
+      name: "Boldonse",
+      cssVariable: "--font-boldonse",
+      fallbacks: ["monospace"],
+      options: {
+        variants: [
+          {
+            weight: "400",
+            style: "normal",
+            src: ["./src/assets/fonts/Boldonse.woff2"],
           },
         ],
       },

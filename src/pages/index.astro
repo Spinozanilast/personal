@@ -1,16 +1,16 @@
 ---
-import Layout from "@/layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 
+import Layout from "@layouts/BaseLayout.astro";
 import Reference from "@features/welcome/Reference.astro";
-import SectionWithBackground from "@features/welcome/SectionWithBackground.astro";
 
+import ThreeHeadsSpzWebp from "@assets/animations/three_heads_spz.webp";
 import GithubIcon from "@assets/icons/brands/github.svg";
 import TelegramIcon from "@assets/icons/brands/telegram.svg";
 import EmailIcon from "@assets/icons/email.svg";
 import BookIcon from "@assets/icons/book.svg";
 import HomeIcon from "@assets/icons/home.svg";
 import CvIcon from "@assets/icons/cv.svg";
-import WaveAnimation from "@assets/wave_animation.svg";
 
 import PaperTouchAudioSrc from "@assets/audio/paper_touch.mp3";
 import DoorCreaksAudioSrc from "@assets/audio/door_creaks.mp3";
@@ -30,58 +30,8 @@ import OpeningBookAudioSrc from "@assets/audio/opening_book.mp3";
 </script>
 
 <Layout title="Welcome" classNames={{ body: "content-center" }}>
-  <main class="flex flex-col items-center justify-center pb-20 md:pb-0">
-    <WaveAnimation class="wave-animation" />
-    <section id="nickname">
-      <h1
-        id="nickname-self"
-        class="md:font-extrude font-pixelify mt-10 flex w-full min-w-max text-center text-[12vw] font-bold -tracking-widest uppercase hover:tracking-normal md:flex-row"
-      >
-        <span class="text-foreground-bottom-accent relative">s</span>
-        <span class="text-foreground-top-accent relative">p</span>
-        <span class="text-foreground-bottom-accent relative">i</span>
-        <span class="text-foreground-top-accent relative">n</span>
-        <span class="text-foreground-bottom-accent relative">o</span>
-        <span class="text-foreground-top-accent relative">z</span>
-        <span class="text-foreground-bottom-accent relative">a</span>
-        <span class="text-foreground-top-accent relative">n</span>
-        <span class="text-foreground-bottom-accent relative">i</span>
-        <span class="text-foreground-top-accent relative">l</span>
-        <span class="text-foreground-bottom-accent relative">a</span>
-        <span class="text-foreground-top-accent relative">s</span>
-        <span class="text-foreground-bottom-accent relative">t</span>
-      </h1>
-      <div
-        class="horizontal-line bg-logo-underline relative bottom-6.25 mt-[0.5em] h-[calc(min(1vw,2vh)/1)] w-full rounded-md"
-      >
-      </div>
-    </section>
-    <SectionWithBackground
-      title="Links"
-      class="bg-section-background rounded-xl"
-      iconName={"link"}
-      enableTitleOnBackground
-    >
-      <a href="https://github.com/spinozanilast" class="link" target="_blank">
-        <GithubIcon />
-        <span class="block">Github</span>
-      </a>
-      <a href="https://t.me/spinozanilast" class="link" target="_blank">
-        <TelegramIcon />
-        <span class="block">Telegram</span>
-      </a>
-      <a href="mailto:spinozanilast@proton.me" class="link">
-        <EmailIcon />
-        <span class="block">Email</span>
-      </a>
-    </SectionWithBackground>
-    <SectionWithBackground
-      id="navigation"
-      title="Navigation"
-      iconName="navigation"
-      enableTitleOnBackground
-      class="bg-section-background container rounded-xl"
-    >
+  <main class="grid min-h-screen grid-cols-1 grid-rows-[30%_auto_1fr]">
+    <div class="flex h-20 w-min gap-1 self-end-safe">
       <Reference
         audioSrc={DoorCreaksAudioSrc}
         title="Home"
@@ -97,76 +47,37 @@ import OpeningBookAudioSrc from "@assets/audio/opening_book.mp3";
       <Reference audioSrc={PaperTouchAudioSrc} title="CV" link="/cv" separateTab={false}
         ><CvIcon /></Reference
       >
-    </SectionWithBackground>
+    </div>
+    <div class="pointer-events-none h-fit w-screen">
+      <h1 class="nickname font-boldonse text-accent flex-1">SPINOZANILAST</h1>
+    </div>
+    <Image
+      class="absolute bottom-0 left-1/2 h-[60%] w-fit -translate-x-1/2 brightness-150 select-none"
+      style={{ filter: "var(--hue-filter-addition, ) brightness(150%)" }}
+      src={ThreeHeadsSpzWebp}
+      alt="Three Heads SPZ"
+    />
+    <div class="mr-5 flex h-20 w-min flex-col items-end gap-1 justify-self-end">
+      <a href="https://github.com/spinozanilast" class="link" target="_blank">
+        <span class="block">Github</span>
+        <GithubIcon />
+      </a>
+      <a href="https://t.me/spinozanilast" class="link" target="_blank">
+        <span class="block">Telegram</span>
+        <TelegramIcon />
+      </a>
+      <a href="mailto:spinozanilast@proton.me" class="link">
+        <span class="block">Email</span>
+        <EmailIcon />
+      </a>
+    </div>
   </main>
 </Layout>
 
 <style>
   @reference "../global.css";
 
-  main > section:not(:first-of-type) {
-    @apply my-2.5 max-w-3/4 min-w-3/4 md:min-h-[25vh];
-  }
-
-  main > section:first-of-type {
-    @apply top-4 my-2.5 mt-8 max-h-[30vh];
-  }
-
-  section#nickname {
-    @apply flex w-fit flex-col items-end justify-center p-4;
-  }
-
-  #nickname-self {
-    transition: letter-spacing 1s ease-in-out;
-    > span {
-      transition: all var(--standard-animation-duration);
-    }
-    @media (width >= 450px) {
-      span {
-        -webkit-text-stroke: var(--logo-stroke) 5px;
-      }
-    }
-  }
-
-  section#navigation.container {
-    @apply flex flex-row items-center justify-center gap-2 px-20;
-
-    @media (width <= 700px) {
-      @apply px-4 py-4;
-    }
-
-    @media (width <= 1450px) {
-      @apply flex-col;
-    }
-
-    @media (width <= 500px) {
-      @apply flex flex-col items-center justify-center px-4;
-    }
-  }
-
-  svg:not(.wave-animation) {
-    @apply h-full w-full;
-  }
-
-  @media (max-width: 768px) {
-    .horizontal-line {
-      bottom: 0.625rem;
-    }
-  }
-
-  :global(span.letter-glow) {
-    @apply text-shadow-lg;
-  }
-
-  @media screen and (max-width: 768px) {
-    section#links {
-      > a {
-        @apply h-34 w-34;
-      }
-    }
-  }
-
-  .link {
-    @apply h-28 flex-col md:h-[7em];
+  h1 {
+    text-fit: grow;
   }
 </style>

@@ -69,6 +69,7 @@ const description =
     <Font cssVariable="--font-retrogression" preload />
     <Font cssVariable="--font-extrude" preload />
     <Font cssVariable="--font-manrope" preload />
+    <Font cssVariable="--font-boldonse" preload />
   </head>
 </html>
 <body class={classNames?.body}>
@@ -96,7 +97,7 @@ const description =
     (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   document.documentElement.setAttribute("data-theme", theme);
 
-  const color = localStorage.getItem("color") || "orange";
+  const color = localStorage.getItem("color") || "red";
   document.documentElement.setAttribute("data-color", color);
 
   const backToTopButton = document.getElementById("back-to-top");
