@@ -30,49 +30,54 @@ import OpeningBookAudioSrc from "@assets/audio/opening_book.mp3";
 </script>
 
 <Layout title="Welcome" classNames={{ body: "content-center" }}>
-  <main class="grid min-h-screen grid-cols-1 grid-rows-[30%_auto_1fr]">
-    <div class="flex h-20 w-min gap-1 self-end-safe">
-      <Reference
-        audioSrc={DoorCreaksAudioSrc}
-        title="Home"
-        link="/home"
-        separateTab={false}><HomeIcon /></Reference
-      >
-      <Reference
-        audioSrc={OpeningBookAudioSrc}
-        title="Notes"
-        link="/notes"
-        separateTab={false}><BookIcon /></Reference
-      >
-      <Reference audioSrc={PaperTouchAudioSrc} title="CV" link="/cv" separateTab={false}
-        ><CvIcon /></Reference
-      >
-    </div>
-    <div class="pointer-events-none h-fit w-screen">
-      <h1 class="nickname font-boldonse text-accent flex-1 text-center">
-        SPINOZANILAST
-      </h1>
+  <main class="flex min-h-screen flex-col justify-end-safe gap-10">
+    <div class="grid-cols-1 grid-rows-[30%_auto_1fr] md:grid md:min-h-screen">
+      <div class="flex h-20 w-min gap-2 self-end-safe md:gap-1">
+        <Reference
+          audioSrc={DoorCreaksAudioSrc}
+          title="Home"
+          link="/home"
+          separateTab={false}><HomeIcon /></Reference
+        >
+        <Reference
+          audioSrc={OpeningBookAudioSrc}
+          title="Notes"
+          link="/notes"
+          separateTab={false}><BookIcon /></Reference
+        >
+        <Reference
+          audioSrc={PaperTouchAudioSrc}
+          title="CV"
+          link="/cv"
+          separateTab={false}><CvIcon /></Reference
+        >
+      </div>
+      <div class="pointer-events-none h-fit w-screen">
+        <h1 class="nickname font-boldonse text-accent flex-1 text-center">
+          SPINOZANILAST
+        </h1>
+      </div>
+      <div class="mr-5 flex h-20 w-min flex-col items-end gap-1 justify-self-end">
+        <a href="https://github.com/spinozanilast" class="link" target="_blank">
+          <span class="block">Github</span>
+          <GithubIcon />
+        </a>
+        <a href="https://t.me/spinozanilast" class="link" target="_blank">
+          <span class="block">Telegram</span>
+          <TelegramIcon />
+        </a>
+        <a href="mailto:spinozanilast@proton.me" class="link">
+          <span class="block">Email</span>
+          <EmailIcon />
+        </a>
+      </div>
     </div>
     <Image
-      class="absolute bottom-0 left-1/2 h-[60%] w-fit -translate-x-1/2 brightness-150 select-none"
+      class="bottom-0 left-1/2 w-fit brightness-150 select-none md:absolute md:h-[60%] md:-translate-x-1/2"
       style={{ filter: "var(--hue-filter-addition, ) brightness(150%)" }}
       src={ThreeHeadsSpzWebp}
       alt="Three Heads SPZ"
     />
-    <div class="mr-5 flex h-20 w-min flex-col items-end gap-1 justify-self-end">
-      <a href="https://github.com/spinozanilast" class="link" target="_blank">
-        <span class="block">Github</span>
-        <GithubIcon />
-      </a>
-      <a href="https://t.me/spinozanilast" class="link" target="_blank">
-        <span class="block">Telegram</span>
-        <TelegramIcon />
-      </a>
-      <a href="mailto:spinozanilast@proton.me" class="link">
-        <span class="block">Email</span>
-        <EmailIcon />
-      </a>
-    </div>
   </main>
 </Layout>
 

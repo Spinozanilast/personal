@@ -73,8 +73,7 @@ const {
 
   .reference-content {
     @apply text-foreground flex flex-row items-center justify-center gap-[0.5em] text-3xl;
-
-    svg {
+    & :global(svg) {
       @apply max-w-16 min-w-2;
 
       @media (width <= 700px) {
@@ -82,12 +81,12 @@ const {
       }
     }
 
-    @media (width <= 700px) {
+    @media (width <= 1000px) {
       @apply flex-col text-xl;
     }
   }
 
-  @media (width <= 700px) {
+  @media (width <= 1000px) {
     .reference {
       @apply h-full w-full justify-center;
 
