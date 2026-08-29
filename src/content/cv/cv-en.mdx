@@ -1,8 +1,8 @@
 ---
 title: "Vadim Budchanin — CV"
-description: "Resume of Vadim Budchanin, .NET developer with 1 year 10 months of experience"
+description: "Resume of Vadim Budchanin, .NET developer with 2 years 7 months of experience"
 publishedAt: 2026-07-23
-updateAt: 2026-07-23
+updateAt: 2026-08-28
 ---
 
 import Timeline from "@features/cv/Timeline.astro";
@@ -11,37 +11,128 @@ import Image from "@features/md/Image";
 import Badge from "@components/Badge.astro";
 import BadgeGroup from "@components/BadgeGroup.astro";
 
+export const formatDuration = (startDate, endDate = new Date()) => {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+
+  const totalMonths =
+    (end.getFullYear() - start.getFullYear()) * 12 +
+    (end.getMonth() - start.getMonth() + 1);
+
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+
+  const parts = [];
+  if (years === 1) parts.push("1 year");
+  else if (years > 1) parts.push(`${years} years`);
+  if (months === 1) parts.push("1 month");
+  else if (months > 1) parts.push(`${months} months`);
+
+  return parts.join(" ");
+};
+
+export const todayDiffMayMonths = Math.round(
+  (Date.now() - new Date("2026-05-01").getTime()) / (1000 * 60 * 60 * 24 * 30),
+);
+
 # Budchanin Vadim Aleksandrovich
 
 _Male, 22 years old, born June 25, 2004_
 
 ## Contact
 
-|             |                                              |
-| ----------- | -------------------------------------------- |
-| 📍 Location | Minsk, Belarus                               |
-| 📱 Phone    | +375 (33) 3787251                            |
-| ✉️ Email    | spinozanilast@gmail.com                      |
-| 💬 Telegram | [@spinozanilast](https://t.me/spinozanilast) |
+|             |                                                              |
+| ----------- | ------------------------------------------------------------ |
+| 📍 Location | Minsk, Belarus                                               |
+| 📱 Phone    | +375 (33) 3787251                                            |
+| ✉️ Email    | vadik.trolla@gmail.com (preferred)                           |
+| 💬 Telegram | [@spinozanilast](https://t.me/spinozanilast)                 |
+| 🐙 GitHub   | [Spinozanilast](https://github.com/Spinozanilast)            |
+| 🌐 Website  | [spinozanilast.vercel.app](https://spinozanilast.vercel.app) |
+
+**Citizenship:** Belarus (work permit: Belarus)
+
+**Relocation:** Open to Brest and Minsk regions; not available for business trips.
 
 ## About Me
 
-.NET developer with 1 year 10 months of experience. Participated in the development and maintenance of services for corporate clients, including integration with databases and CRM systems. Responsible for developing, optimizing, and testing key modules. Collaborated in a team of developers and analysts, ensuring service integration and meeting deadlines. Detail-oriented, eager to learn and solve complex problems.
+Fullstack developer (.NET / React) with 2 years 7 months of experience.
 
-## Work Experience
+Started with backend, then spent 7 months leading full-cycle web application development: from database design to React interfaces. Before that, 1 year 7 months developing microservices on .NET 8: call analytics, CRM Bitrix integration, PostgreSQL, MongoDB, RabbitMQ, gRPC. Achieved 90% test coverage, responsible for inter-service integrations.
+
+After completing military service (October 2025 – May 2026), returned to backend development at BalinaSoft. Currently focused on REST API design, database schemas, and integrations, while occasionally assisting with frontend (Next.js, Nuxt.js, Tailwind, Bootstrap).
+
+On the frontend, confident with React, Next.js, and Tailwind. Vue and Nuxt — at the level of supporting and extending existing projects.
+
+## Work Experience _(2 years 7 months)_
 
 <Timeline>
 
-<TimelineItem date="April 2025 — October 2025 (7 months)" timePercentage={35} >
+<TimelineItem date={`May 2026 — Present (${formatDuration("2026-05-01")})`} timePercentage={Math.round(todayDiffMayMonths/ (27 + todayDiffMayMonths) * 100)} >
+
+### OOO BalinaSoft — _Backend Developer (.NET)_
+
+Minsk · [balinasoft.com](https://balinasoft.com)
+
+Returned after military service. Quickly regained context and am now handling tasks independently.
+
+<details>
+<summary><strong>Current responsibilities</strong></summary>
+
+- Designing REST APIs and database schemas (PostgreSQL, MySQL), writing queries via Dapper
+- Developing integrations with external services: payments, email notifications, report exports
+- Implementing server-side logic for admin panels: orders, scheduling, clients, roles
+- Writing unit tests, setting up CI/CD
+- Optimizing queries and API response times
+- Occasionally helping with frontend: Next.js, Nuxt.js, Tailwind, Bootstrap
+
+</details>
+
+**Backend:** <Badge variant="accent">ASP.NET Core</Badge> <Badge>Dapper</Badge>
+
+**Databases:** <Badge>PostgreSQL</Badge> <Badge>MySQL</Badge>
+
+**Frontend:** <Badge variant="success">Next.js</Badge> <Badge variant="success">Nuxt.js</Badge> <Badge variant="info">Tailwind CSS</Badge> <Badge>Bootstrap</Badge>
+
+</TimelineItem>
+
+<TimelineItem date={`March 2025 — October 2025 (${formatDuration("2025-03-01", "2025-10-31")})`} timePercentage={25} >
 
 ### OOO BalinaSoft — _Fullstack Developer_
 
 Minsk · [balinasoft.com](https://balinasoft.com)
 
-Full-cycle web application development: from database structure to user interface.
+Led full-cycle web application development: from requirements gathering and database design to deployment and maintenance. Worked in small teams, often combining roles: communicating with clients, designing UX scenarios, writing backend code, and building frontend.
 
-- **Projects:** SaaS platform for the beauty industry, cinema booking service, airport management system
-- **Tasks:** Designing and writing REST APIs, working with databases via Dapper, developing SSR interfaces (Next/Nuxt) and adaptive UI with Tailwind/Bootstrap
+<details>
+<summary><strong>Responsibilities</strong></summary>
+
+- Designed REST APIs and database schemas (PostgreSQL, MySQL), wrote complex queries via Dapper
+- Developed SSR interfaces on Next.js and Nuxt.js, adaptive UI with Tailwind CSS and Bootstrap
+- Built admin panels: order management, scheduling, client management, user roles
+- Integrated with external services: online payments, email notifications, Excel report exports
+- Wrote backend unit tests, set up CI/CD for automated builds and deployments
+- Optimized queries and page load times
+
+</details>
+
+<details>
+<summary><strong>Projects</strong></summary>
+
+- **SaaS platform for the beauty industry:** online booking, employee scheduling, service tracking, client dashboard
+- **Cinema booking service:** session selection, interactive seating layout, payment, ticket generation
+- **Airport management system:** flight board, statuses, user roles, internal reports
+
+</details>
+
+<details>
+<summary><strong>Achievements</strong></summary>
+
+- Led one project almost independently: from database structure to server deployment
+- Set up CI/CD, which significantly sped up release cycles
+- Learned to interpret client requirements and propose solutions they would approve
+
+</details>
 
 **Backend:** <Badge variant="accent">ASP.NET Core</Badge> <Badge>Dapper</Badge>
 
@@ -53,37 +144,54 @@ Full-cycle web application development: from database structure to user interfac
 
 </TimelineItem>
 
-<TimelineItem date="November 2023 — January 2025 (1 year 3 months)" timePercentage={65}>
+<TimelineItem date={`August 2023 — February 2025 (${formatDuration("2023-08-01", "2025-02-28")})`} timePercentage={62} >
 
 ### Expert Garant, OOO "ROST" — _Backend Developer_
 
 Saint Petersburg · [garantx.ru](https://garantx.ru)
 
-**Project:** Client call analysis service aimed at improving the performance of the quality/call department. Provides analytical data and recommendations based on collecting and analyzing information about client interactions.
+**Project:** Client call analysis service for the quality/call department. Provides analytical data and recommendations based on collecting and analyzing information about client interactions.
 
 **Team:** Product Manager, 2 Analysts, 3 Frontend Developers, 2 Python Developers, 2 .NET Developers
 
 <details>
 <summary><strong>Responsibilities</strong></summary>
 
-- Development and maintenance of a metadata storage service for specialist-client call records and an authentication service
-- Implementation of interaction with the call analysis service via contracts (API)
-- Integration with databases (PostgreSQL, MongoDB)
-- Development and maintenance of a CRM Bitrix interaction service
-- Creation and maintenance of service and API documentation
+- Developed and maintained the metadata storage service for specialist-client call records and the authentication service (.NET 8, ASP.NET Core)
+- Implemented API contracts for interaction with the call analysis service
+- Designed metadata storage schemas, wrote queries (EF Core, Dapper, PostgreSQL)
+- Developed the CRM Bitrix integration service: synchronizing call and client data
+- Handled incoming requests from the metadata service and forwarded data to Bitrix via REST API
+- Wrote integration and unit tests (xUnit)
+- Maintained API documentation (Swagger)
 
 </details>
 
 <details>
 <summary><strong>Achievements</strong></summary>
 
-- Implemented solutions for client call analysis, increasing query processing efficiency by **30%** through optimization of inter-service communication
-- Achieved **90%** test coverage for the metadata service and authentication service
-- Collaborated with Python developers to ensure service integration
+- Participated in developing the client call analysis solution. Through optimization of inter-service communication (caching, reducing request volume), data processing time was reduced by **30%**
+- Achieved **90%** test coverage for the metadata and authentication services (unit + integration tests)
+- Ensured stable data synchronization with CRM Bitrix: configured retry logic on failures, resolved data desynchronization issues
+- Worked closely with Python developers on API contracts — accelerated integration of the call analysis service
+- Independently developed and deployed a Telegram bot for the quality department: access to call analytics without a web interface
 
 </details>
 
-**Backend:** <Badge variant="accent">.NET 8.0</Badge> <Badge variant="accent">ASP.NET Core</Badge> <Badge>EF Core</Badge> <Badge>Dapper</Badge> <Badge>Flurl</Badge>
+<details>
+<summary><strong>Side project (deployed internally)</strong></summary>
+
+Telegram bot for the quality department — access to client call analytics without a web interface.
+
+- Provides call summaries on command: daily count, average duration, problematic topics
+- Data aggregation from PostgreSQL via Dapper (complex queries with grouping and filtering)
+- Ability to request statistics by specific employee or time period
+- Daily automated summary push to the department's work chat via BackgroundService
+- Used by analysts and the department head on a daily basis
+
+</details>
+
+**Backend:** <Badge variant="accent">.NET 8</Badge> <Badge variant="accent">ASP.NET Core</Badge> <Badge>EF Core</Badge> <Badge>Dapper</Badge> <Badge>Flurl</Badge>
 
 **Databases:** <Badge>PostgreSQL</Badge> <Badge>MongoDB</Badge>
 
@@ -132,6 +240,7 @@ Saint Petersburg · [garantx.ru](https://garantx.ru)
   <Badge variant="success">Angular</Badge>
   <Badge variant="success">React</Badge>
   <Badge variant="success">NextJS</Badge>
+  <Badge variant="success">VueJS</Badge>
 </BadgeGroup>
 
 **Databases:**
@@ -160,6 +269,7 @@ Saint Petersburg · [garantx.ru](https://garantx.ru)
   <Badge variant="info">GraphQL</Badge>
   <Badge variant="info">RabbitMQ</Badge>
   <Badge>JWT</Badge>
+  <Badge>OOP</Badge>
 </BadgeGroup>
 
 **Tools:**
@@ -173,3 +283,9 @@ Saint Petersburg · [garantx.ru](https://garantx.ru)
   <Badge>Atlassian Jira</Badge>
   <Badge>Atlassian Confluence</Badge>
 </BadgeGroup>
+
+## Additional Information
+
+Outside of work, I enjoy pixel art, building and configuring Arch Linux, and occasional tabletop games. I value deep dives into details — whether it's perfecting each pixel or fine-tuning system configs. I also create small side projects to automate routine tasks or make life easier for users.
+
+Ready to discuss how my experience can strengthen your team.

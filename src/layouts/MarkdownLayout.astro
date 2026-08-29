@@ -201,12 +201,16 @@ const { title, headings = [] } = Astro.props;
       background: var(--section-background);
 
       summary {
-        @apply cursor-pointer font-bold select-none;
+        @apply cursor-pointer font-bold opacity-100 select-none;
         color: var(--accent-color);
 
         &:hover {
           color: var(--actions);
         }
+      }
+
+      *:not(summary) {
+        @apply opacity-0;
       }
 
       &[open] summary {
