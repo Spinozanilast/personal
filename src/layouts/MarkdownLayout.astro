@@ -207,10 +207,14 @@ const { title, headings = [] } = Astro.props;
         &:hover {
           color: var(--actions);
         }
+
+        :is(strong) {
+          @apply opacity-100;
+        }
       }
 
       *:not(summary) {
-        @apply opacity-0;
+        @apply text-balance;
       }
 
       &[open] summary {

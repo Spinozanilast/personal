@@ -365,12 +365,12 @@ const { title, className } = Astro.props;
     }
 
     #nav-wrapper {
-      @apply fixed top-2 left-1/2 z-50 -translate-x-1/2 transition-all duration-300 ease-in-out;
+      @apply w-0 opacity-0 transition-all duration-300 ease-in-out;
       transform-origin: top center;
     }
 
     #nav-wrapper[data-menu-open="false"] {
-      @apply pointer-events-none w-0 opacity-0;
+      @apply pointer-events-none;
     }
 
     #nav-wrapper[data-menu-open="true"] {
