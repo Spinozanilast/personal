@@ -1,6 +1,11 @@
 import { clsx, type ClassValue } from "clsx";
 import { extendTailwindMerge } from "tailwind-merge";
 
+export type NavigationLinks<HrefT = `#${string}`> = Array<{
+  href: HrefT;
+  text: string;
+}>;
+
 const isDepartureMonoSize = (value: string) => value.startsWith("dm-");
 
 const twMerge = extendTailwindMerge({

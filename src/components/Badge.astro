@@ -19,10 +19,7 @@ const { variant = "default", class: className, ...attrs } = Astro.props;
   @reference "../global.css";
 
   .badge {
-    @apply inline-flex items-center rounded-full px-3 py-1 font-manrope text-xs font-semibold;
-    border: 1px solid transparent;
-    transition: all 0.2s ease;
-    white-space: nowrap;
+    @apply font-manrope inline-flex items-center rounded-full border border-solid border-transparent px-3 py-1 text-xs font-semibold whitespace-nowrap transition-all duration-200;
 
     &:hover {
       transform: translateY(-1px);
@@ -30,38 +27,31 @@ const { variant = "default", class: className, ...attrs } = Astro.props;
   }
 
   .badge-default {
-    background: var(--section-background);
-    border-color: var(--section-secondary);
-    color: var(--text-color);
+    @apply bg-section-background border-section-secondary;
   }
 
   .badge-accent {
+    @apply border-accent text-accent;
     background: color-mix(in srgb, var(--accent-color) 15%, transparent);
-    border-color: var(--accent-color);
-    color: var(--accent-color);
   }
 
   .badge-success {
+    @apply text-actions border-actions;
     background: color-mix(in srgb, var(--actions) 15%, transparent);
-    border-color: var(--actions);
-    color: var(--actions);
   }
 
   .badge-warning {
+    @apply border-[#f59e0b] text-[#f59e0b];
     background: color-mix(in srgb, #f59e0b 15%, transparent);
-    border-color: #f59e0b;
-    color: #f59e0b;
   }
 
   .badge-danger {
+    @apply text-foreground-top-accent border-foreground-top-accent;
     background: color-mix(in srgb, var(--top-accent-color) 15%, transparent);
-    border-color: var(--top-accent-color);
-    color: var(--top-accent-color);
   }
 
   .badge-info {
+    @apply text-foreground-bottom-accent border-foreground-bottom-accent;
     background: color-mix(in srgb, var(--bottom-accent-color) 15%, transparent);
-    border-color: var(--bottom-accent-color);
-    color: var(--bottom-accent-color);
   }
 </style>

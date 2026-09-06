@@ -8,11 +8,9 @@ import ProjectCard from "@features/projects/ProjectCard.astro";
 import CharacterDialogWrapper from "@features/home/CharacterDialogWrapper.astro";
 import RemCylinder from "@features/home/RemCylinder.astro";
 import Keyboard from "@features/home/Keyboard.astro";
-
 import GithubStats from "@features/home/GithubStats.astro";
 import CountryWidget from "@features/home/CountryWidget.astro";
 import TimeWidget from "@features/home/TimeWidget.astro";
-
 import RightHand from "@features/home/RightHand";
 import SpotifyNowPlayingWidget from "@/features/home/SpotifyNowPlayingWidget";
 
@@ -23,6 +21,14 @@ import WaveAnimation from "@assets/wave_animation.svg";
 
 import { projects } from "@data/projects";
 import { Icon } from "astro-icon/components";
+import { type NavigationLinks } from "@lib/utils";
+
+const paperLinks: NavigationLinks = [
+  { href: "#projects", text: "writing code" },
+  { href: "#notes", text: "writing stuff" },
+  { href: "#art", text: "writing code" },
+  { href: "#future", text: "and a lot more in future" },
+];
 ---
 
 <HomeLayout title="Home">
@@ -69,34 +75,15 @@ import { Icon } from "astro-icon/components";
               <h2 class="text-3xl">I'm software engineer</h2>
               <h2 class="text-3xl">who likes making next things:</h2>
               <ul>
-                <a href="#projects">
-                  <li
-                    class="decoration-accent before:text-accent before:font-departuremono relative flex w-fit flex-row items-center text-3xl decoration-3 underline-offset-1 before:mr-2 before:content-['✧'] hover:underline"
-                  >
-                    writing code
-                  </li>
-                </a>
-                <a href="#notes">
-                  <li
-                    class="decoration-accent before:text-accent before:font-departuremono relative flex w-fit flex-row items-center text-3xl decoration-3 underline-offset-1 before:mr-2 before:content-['✧'] hover:underline"
-                  >
-                    writing stuff
-                  </li>
-                </a>
-                <a href="#art">
-                  <li
-                    class="decoration-accent before:text-accent before:font-departuremono relative flex w-fit flex-row items-center text-3xl decoration-3 underline-offset-1 before:mr-2 before:content-['✧'] hover:underline"
-                  >
-                    making some art
-                  </li>
-                </a>
-                <a href="#future">
-                  <li
-                    class="decoration-accent before:text-accent before:font-departuremono relative flex w-fit flex-row items-center text-3xl decoration-3 underline-offset-1 before:mr-2 before:content-['✧'] hover:underline"
-                  >
-                    and a lot more in future
-                  </li>
-                </a>
+                {
+                  paperLinks.map((link) => (
+                    <a href={link.href}>
+                      <li class="decoration-accent before:text-accent before:font-departuremono relative flex w-fit flex-row items-center text-3xl decoration-3 underline-offset-1 before:mr-2 before:content-['✧'] hover:underline">
+                        {link.text}
+                      </li>
+                    </a>
+                  ))
+                }
               </ul>
               <br />
               <h2 class="mb-5 text-3xl">Nice to meet you!</h2>
@@ -435,11 +422,8 @@ import { Icon } from "astro-icon/components";
   @reference "../../global.css";
 
   #killer-avatar {
-    background-image: url("../../assets/sheets/killer_character.png");
+    @apply h-32 w-35 bg-[url("../../assets/sheets/killer_character.png")] text-justify;
     image-rendering: pixelated;
-    text-align: justify;
-    width: 140px;
-    height: 128px;
     transform: translateY(-42%);
     background-position-x: 0px;
     background-size: 700px 128px;

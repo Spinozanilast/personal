@@ -52,39 +52,27 @@ const { title, headings = [] } = Astro.props;
 
   @media (min-width: 769px) {
     .toc-sidebar {
-      position: sticky;
-      top: 20rem;
-      align-self: flex-start;
-      margin-left: 2rem;
-      margin-bottom: 0;
-      max-height: calc(100vh - 8rem);
-      overflow-y: auto;
-      width: 12rem;
+      @apply sticky top-80 mb-0 ml-8 max-h-[calc(100vh-8rem)] w-48 self-start overflow-y-auto;
     }
   }
 
   .markdown-content {
-    @apply prose-headings:text-accent prose-headings:font-departuremono font-manrope text-foreground;
-
-    color: var(--text-color);
+    @apply prose-headings:text-accent prose-headings:font-departuremono font-manrope;
 
     h1 {
       @apply text-dm-xl mb-2;
     }
 
     h2 {
-      @apply text-dm-lg mt-10 mb-4 pb-2 underline decoration-wavy decoration-2 underline-offset-8;
-      color: var(--accent-color);
+      @apply text-dm-lg text-accent mt-10 mb-4 pb-2 underline decoration-wavy decoration-2 underline-offset-8;
     }
 
     h3 {
-      @apply text-dm-sm mt-6 mb-2;
-      color: var(--accent-color);
+      @apply text-dm-sm text-accent mt-6 mb-2;
     }
 
     h4 {
-      @apply mt-4 mb-2 text-lg;
-      color: var(--accent-color);
+      @apply text-accent mt-4 mb-2 text-lg;
     }
 
     p {
@@ -92,10 +80,7 @@ const { title, headings = [] } = Astro.props;
     }
 
     a {
-      color: var(--accent-color);
-      text-decoration: underline;
-      text-underline-offset: 2px;
-      transition: color 0.2s;
+      @apply text-accent underline underline-offset-2 transition-[color_0.2s];
 
       &:hover {
         color: var(--actions);
@@ -103,26 +88,19 @@ const { title, headings = [] } = Astro.props;
     }
 
     strong {
-      color: var(--accent-color);
-      font-weight: bold;
+      @apply text-accent font-bold;
     }
 
     em {
-      font-style: italic;
-      opacity: 0.8;
+      @apply italic opacity-80;
     }
 
     hr {
-      @apply my-6;
-      border: none;
-      border-top: 1px solid var(--section-secondary);
+      @apply my-6 border-t-[1px_solid_var(--section-secondary)];
     }
 
     blockquote {
-      @apply my-4 pl-4 italic;
-      border-left: 3px solid var(--accent-color);
-      color: var(--text-color);
-      opacity: 0.9;
+      @apply text-foreground my-4 border-l-[3px_solid_var(--accent-color)] pl-4 italic opacity-90;
     }
 
     ul {
@@ -144,15 +122,16 @@ const { title, headings = [] } = Astro.props;
     table {
       @apply mx-auto my-4 border-collapse p-4 text-left text-sm;
 
+      tbody {
+        @apply border-accent border-y border-solid;
+      }
+
       th {
-        @apply px-3 py-2 font-bold;
-        border-bottom: 2px solid var(--section-secondary);
-        color: var(--accent-color);
+        @apply text-accent border-b-[2px_solid_var(--section-secondary)] px-3 py-2 font-bold;
       }
 
       td {
-        @apply px-3 py-2;
-        border-bottom: 1px solid var(--section-secondary);
+        @apply border-b-[1px_solid_var(--section-secondary)] px-3 py-2;
       }
 
       th,
@@ -161,51 +140,43 @@ const { title, headings = [] } = Astro.props;
       }
 
       tbody tr:nth-child(odd) {
-        background: var(--section-background);
+        @apply bg-section-background;
       }
 
       tbody tr:nth-child(even) {
-        background: transparent;
+        @apply bg-transparent;
       }
 
       tr:last-child td {
-        border-bottom: 2px solid var(--section-secondary);
+        @apply border-b-[2px_solid_var(--section-secondary)];
       }
     }
 
     code {
-      @apply rounded px-1.5 py-0.5 text-sm;
-      background: var(--section-background);
-      color: var(--top-accent-color);
+      @apply bg-section-background text-foreground-top-accent rounded px-1.5 py-0.5 text-sm;
     }
 
     pre {
-      @apply my-4 overflow-x-auto rounded-lg p-4;
-      background: var(--section-background);
-      border: 1px solid var(--section-secondary);
+      @apply bg-section-background my-4 overflow-x-auto rounded-lg border-[1px_solid_var(--section-secondary)] p-4;
 
       code {
-        background: none;
-        color: var(--text-color);
-        padding: 0;
+        @apply text-foreground bg-none p-0;
       }
     }
 
     img {
-      @apply my-4 rounded-lg;
-      max-width: 100%;
+      @apply my-4 max-w-full rounded-lg;
     }
 
     details {
-      @apply my-3 rounded-lg p-4;
-      background: var(--section-background);
+      @apply bg-section-background my-3 rounded-lg p-4;
+      interpolate-size: allow-keywords;
 
       summary {
-        @apply cursor-pointer font-bold opacity-100 select-none;
-        color: var(--accent-color);
+        @apply text-accent cursor-pointer font-bold opacity-100 select-none;
 
         &:hover {
-          color: var(--actions);
+          @apply text-actions;
         }
 
         :is(strong) {
@@ -213,19 +184,25 @@ const { title, headings = [] } = Astro.props;
         }
       }
 
-      *:not(summary) {
+      > :not(summary) {
         @apply text-balance;
       }
 
-      &[open] summary {
-        @apply mb-2;
+      &::details-content {
+        height: 0;
+        overflow: hidden;
+        transition:
+          height 0.3s ease,
+          content-visibility 0.3s allow-discrete;
+      }
+
+      &[open]::details-content {
+        height: auto;
       }
     }
 
     kbd {
-      @apply rounded border px-1.5 py-0.5 font-mono text-sm;
-      background: var(--section-background);
-      border-color: var(--section-secondary);
+      @apply bg-section-background border-section-secondary rounded border px-1.5 py-0.5 font-mono text-sm;
     }
   }
 </style>

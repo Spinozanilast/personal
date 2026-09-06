@@ -43,11 +43,7 @@ const { date, timePercentage, class: className, ...attrs } = Astro.props;
     @apply absolute top-1 -left-9 z-10 flex h-4 w-4 items-center justify-center;
 
     .timeline-dot-inner {
-      @apply h-3 w-3 rounded-full border-2;
-      border-color: var(--accent-color);
-      background: var(--section-background);
-      box-shadow: 0 0 8px var(--accent-color);
-      transition: all 0.3s ease;
+      @apply border-accent bg-section-background h-3 w-3 rounded-full border-2 shadow-[0_0_8px_var(--accent-color)] transition-all duration-300;
 
       &:hover {
         background: var(--accent-color);

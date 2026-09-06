@@ -48,8 +48,7 @@ const {
     @apply relative flex h-fit w-[67.5vw] flex-col items-center justify-center gap-1.5 py-4 md:flex-row;
 
     &::before {
-      content: var(--titleText);
-      @apply font-pixelify absolute z-[-1000] text-[calc(max(1vw,1vh)*10)] opacity-20 blur-xs;
+      @apply font-pixelify absolute z-[-1000] text-[calc(max(1vw,1vh)*10)] opacity-20 blur-xs content-(--titleText);
     }
 
     &.with-border {

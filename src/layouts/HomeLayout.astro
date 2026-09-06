@@ -11,7 +11,7 @@ import fire from "@assets/sheets/fire.png";
 import smokingKiller from "@assets/sheets/killer_smoking.png";
 import snakeLogo from "@assets/sheets/snake_logo.png";
 
-import { cn } from "@lib/utils";
+import { cn, type NavigationLinks } from "@lib/utils";
 
 type Props = {
   title: string;
@@ -26,6 +26,13 @@ const pageIcons: Record<string, string> = {
   "/projects": "projects",
   "/notes": "notes",
 };
+
+const navigationLinks: NavigationLinks<`/${string}`> = [
+  { href: "/home", text: "/Home" },
+  { href: "/projects", text: "/Projects" },
+  { href: "/notes", text: "/Notes" },
+  { href: "/about", text: "/About" },
+];
 
 const currentIcon =
   pageIcons[
@@ -97,30 +104,16 @@ const { title, className } = Astro.props;
             name="navigation"
             class="text-accent h-12 w-12 scale-100 transition-transform"
           />
-          <a
-            class="link arrow text-dm-sm decoration-accent decoration-3 underline-offset-1 hover:scale-110 hover:underline"
-            href="/home"
-          >
-            /Home
-          </a>
-          <a
-            class="link arrow text-dm-sm decoration-accent decoration-3 underline-offset-1 hover:scale-110 hover:underline"
-            href="/projects"
-          >
-            /Projects
-          </a>
-          <a
-            class="link arrow text-dm-sm decoration-accent decoration-3 underline-offset-1 hover:scale-110 hover:underline"
-            href="/notes"
-          >
-            /Notes
-          </a>
-          <a
-            class="link arrow text-dm-sm decoration-accent decoration-3 underline-offset-1 hover:scale-110 hover:underline"
-            href="/about"
-          >
-            /About
-          </a>
+          {
+            navigationLinks.map((link) => (
+              <a
+                class="link arrow text-dm-sm decoration-accent decoration-3 underline-offset-1 hover:scale-110 hover:underline"
+                href={link.href}
+              >
+                {link.text}
+              </a>
+            ))
+          }
         </div>
         <div
           class="bg-section-background font-departuremono text-dm-sm border-accent/20 flex w-full flex-col items-center gap-8 rounded-xl border-2 p-2 px-4 py-6 font-bold backdrop-blur-md md:flex-row hover:[&_svg]:scale-110"
@@ -204,7 +197,7 @@ const { title, className } = Astro.props;
   @reference "../global.css";
 
   html {
-    overflow-x: clip;
+    @apply overflow-x-clip;
   }
 
   #hamburger {

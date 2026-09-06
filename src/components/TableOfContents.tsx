@@ -11,23 +11,29 @@ interface Props {
   headingsDepthBetween?: {
     first: number;
     last: number;
-  }
+  };
 }
 
-export default function TableOfContents({ headings, headingsDepthBetween = {
-  first: 2,
-  last: 6
-} }: Props) {
+export default function TableOfContents({
+  headings,
+  headingsDepthBetween = {
+    first: 2,
+    last: 6,
+  },
+}: Props) {
   const [activeId, setActiveId] = useState<string>("");
 
-  const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, slug: string) => {
-    e.preventDefault();
-    const el = document.getElementById(slug);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-      setActiveId(slug);
-    }
-  }, []);
+  const handleClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, slug: string) => {
+      e.preventDefault();
+      const el = document.getElementById(slug);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        setActiveId(slug);
+      }
+    },
+    [],
+  );
 
   useEffect(() => {
     const visible = new Map<string, number>();
@@ -43,13 +49,11 @@ export default function TableOfContents({ headings, headingsDepthBetween = {
         }
 
         if (visible.size > 0) {
-          const top = [...visible.entries()].reduce((a, b) =>
-            a[1] <= b[1] ? a : b
-          );
+          const top = [...visible.entries()].reduce((a, b) => (a[1] <= b[1] ? a : b));
           setActiveId(top[0]);
         }
       },
-      { rootMargin: "-80px 0px -50% 0px", threshold: 0 }
+      { rootMargin: "-80px 0px -50% 0px", threshold: 0 },
     );
 
     for (const h of headings) {
@@ -64,9 +68,12 @@ export default function TableOfContents({ headings, headingsDepthBetween = {
 
   return (
     <nav aria-label="Table of contents">
-      <ul className="list-none space-y-1 p-0 m-0 text-sm font-departuremono text-dm-xs">
+      <ul className="font-departuremono text-dm-xs m-0 list-none space-y-1 p-0 text-sm">
         {headings.map((h) => {
-          if (h.depth >= headingsDepthBetween.first && h.depth <= headingsDepthBetween.last) {
+          if (
+            h.depth >= headingsDepthBetween.first &&
+            h.depth <= headingsDepthBetween.last
+          ) {
             return (
               <li key={h.slug}>
                 <a
@@ -75,14 +82,13 @@ export default function TableOfContents({ headings, headingsDepthBetween = {
                   className="block text-balance"
                   style={{
                     color:
-                      activeId === h.slug
-                        ? "var(--accent-color)"
-                        : "var(--text-color)",
+                      activeId === h.slug ? "var(--accent-color)" : "var(--text-color)",
                     opacity: activeId === h.slug ? 1 : 0.5,
                     textDecoration: "none",
                     transition: "color 0.2s, opacity 0.2s",
-                    borderLeft: `2px solid ${activeId === h.slug ? "var(--accent-color)" : "transparent"
-                      }`,
+                    borderLeft: `2px solid ${
+                      activeId === h.slug ? "var(--accent-color)" : "transparent"
+                    }`,
                     paddingLeft: `${(h.depth - headingsDepthBetween.first) * 16 + 8}px`,
                   }}
                   onMouseEnter={(e) => {
@@ -101,10 +107,9 @@ export default function TableOfContents({ headings, headingsDepthBetween = {
                   {h.text}
                 </a>
               </li>
-            )
+            );
           }
-        }
-        )}
+        })}
       </ul>
     </nav>
   );
