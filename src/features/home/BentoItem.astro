@@ -1,0 +1,42 @@
+---
+import { cn } from "@lib/utils";
+
+type Props = {
+  class?: string;
+  classNames?: {
+    header?: string;
+    body?: string;
+  };
+  hideHeader?: boolean;
+  headerText?: string;
+};
+
+const { headerText, hideHeader = false, class: className, classNames } = Astro.props;
+---
+
+<div
+  class={cn(
+    "bg-section-background relative size-full rounded-md flex flex-col",
+    className,
+  )}
+>
+  {
+    !hideHeader && (
+      <div
+        class={cn(
+          "bg-section-background text-accent text-dm-sm font-departuremono flex items-center gap-2 place-self-start rounded-tl-md rounded-br-md p-2 px-3 font-bold",
+          classNames?.header,
+        )}
+      >
+        {headerText && headerText.length > 0 ? (
+          <h2 class="font-departuremono text-dm-sm">{headerText}</h2>
+        ) : (
+          <slot name="header" />
+        )}
+      </div>
+    )
+  }
+  <div class={cn("flex items-center justify-center size-full p-4", classNames?.body)}>
+    <slot />
+  </div>
+</div>

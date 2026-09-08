@@ -106,10 +106,7 @@ const { title, className } = Astro.props;
           />
           {
             navigationLinks.map((link) => (
-              <a
-                class="link arrow text-dm-sm decoration-accent decoration-3 underline-offset-1 hover:scale-110 hover:underline"
-                href={link.href}
-              >
+              <a class="link arrow" href={link.href}>
                 {link.text}
               </a>
             ))
@@ -119,7 +116,7 @@ const { title, className } = Astro.props;
           class="bg-section-background font-departuremono text-dm-sm border-accent/20 flex w-full flex-col items-center gap-8 rounded-xl border-2 p-2 px-4 py-6 font-bold backdrop-blur-md md:flex-row hover:[&_svg]:scale-110"
         >
           (C) 2025-2026 Spinozanilast. <a
-            class="link arrow text-dm-sm decoration-accent decoration-3 underline-offset-1 hover:scale-110 hover:underline"
+            class="link arrow"
             target="_blank"
             href="https://github.com/Spinozanilast/spinozanilast.github.io"
           >

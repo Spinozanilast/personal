@@ -9,6 +9,7 @@ interface Player {
   duration?: number;
   progress?: number;
   albumImageUrl?: string;
+  showTitle?: boolean;
 }
 
 const PlayerDefaultNotPlayingState: Player = {
@@ -16,6 +17,7 @@ const PlayerDefaultNotPlayingState: Player = {
   songUrl: undefined,
   title: undefined,
   artist: undefined,
+  showTitle: false,
 };
 
 function SpotifyNowPlayingWidget({ className }: { className?: string }) {
@@ -53,7 +55,7 @@ function SpotifyNowPlayingWidget({ className }: { className?: string }) {
     return (
       <div
         className={cn(
-          "font-departuremono flex w-full items-center lg:justify-between rounded-md p-4 text-center md:text-3xl justify-center gap-4 text-xl md:flex-row flex-col",
+          "font-departuremono flex w-full flex-col items-center justify-center gap-4 rounded-md p-4 text-center text-xl md:flex-row md:text-3xl lg:justify-between",
           className,
         )}
       >
@@ -76,9 +78,11 @@ function SpotifyNowPlayingWidget({ className }: { className?: string }) {
         ♫
       </p>
       <div className="bg-section-secondary rounded-xsl flex w-full flex-col justify-center">
-        <p className="text-accent p-2 text-center text-xl">
-          Playing now on my Spotify:
-        </p>
+        {player.showTitle && (
+          <p className="text-accent p-2 text-center text-xl">
+            Playing now on my Spotify:
+          </p>
+        )}
         <div className="flex w-full flex-row gap-4 p-4">
           <img
             src={player.albumImageUrl}

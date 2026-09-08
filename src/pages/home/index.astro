@@ -11,13 +11,18 @@ import Keyboard from "@features/home/Keyboard.astro";
 import GithubStats from "@features/home/GithubStats.astro";
 import CountryWidget from "@features/home/CountryWidget.astro";
 import TimeWidget from "@features/home/TimeWidget.astro";
+import SystemInfo from "@features/home/SystemInfo.astro";
+import BentoItem from "@features/home/BentoItem.astro";
 import RightHand from "@features/home/RightHand";
-import SpotifyNowPlayingWidget from "@/features/home/SpotifyNowPlayingWidget";
+import SpotifyNowPlayingWidget from "@features/home/SpotifyNowPlayingWidget";
 
 import FoldedPaperCorner from "@assets/folded_paper_corner.png";
 import RotateBehind from "@assets/icons/actions/rotate_behind.svg";
 import LeftHand from "@assets/arts/left_hand_of_two.svg";
 import WaveAnimation from "@assets/wave_animation.svg";
+import GithubIcon from "@assets/icons/brands/github.svg";
+import TimeIcon from "@assets/icons/time.svg";
+import SystemInfoIcon from "@assets/icons/system_info.svg";
 
 import { projects } from "@data/projects";
 import { Icon } from "astro-icon/components";
@@ -192,29 +197,48 @@ const paperLinks: NavigationLinks = [
             title="/ About"
           >
             <div
-              class="bento flex size-full grid-cols-5 grid-rows-3 flex-col place-items-center gap-3 md:grid"
+              class="bento flex size-full grid-cols-6 grid-rows-3 flex-col place-items-center gap-3 md:grid"
             >
-              <div class="col-span-2 flex items-center justify-center">
+              <BentoItem
+                headerText="♫ Now playing on Spotify"
+                class="col-span-2 flex items-center justify-center"
+              >
                 <SpotifyNowPlayingWidget client:load />
-              </div>
-              <div
-                class="col-span-3 row-span-3 flex items-center justify-center md:h-full"
+              </BentoItem>
+              <BentoItem
+                hideHeader
+                class="col-span-4 row-span-2 flex items-center justify-center md:h-full"
               >
                 <CountryWidget />
-              </div>
-              <div>
+              </BentoItem>
+              <BentoItem class="col-span-2">
+                <Fragment slot="header">
+                  <GithubIcon class="fill-accent size-8 lg:size-10" />
+                  Github Contributions
+                </Fragment>
                 <GithubStats />
-              </div>
+              </BentoItem>
               <a
-                class="link text-accent border-accent relative flex items-center justify-center transition-[scale] duration-500 hover:scale-95 hover:border-2 hover:border-solid"
+                class="link text-accent border-accent relative col-span-2 row-span-2 flex items-center justify-center transition-[scale] duration-500 hover:scale-95 hover:border-2 hover:border-solid"
                 href="/cv"
               >
                 <Icon name="cv" class="size-30" />
                 <p>CV</p>
               </a>
-              <div class="col-span-2">
+              <BentoItem class="col-span-2 row-span-2">
+                <Fragment slot="header">
+                  <TimeIcon class="fill-accent size-8 lg:size-10" />
+                  Github Contributions
+                </Fragment>
                 <TimeWidget />
-              </div>
+              </BentoItem>
+              <BentoItem class="col-span-2 row-span-2 @container">
+                <Fragment slot="header">
+                  <SystemInfoIcon class="fill-accent size-8 lg:size-10" />
+                  System
+                </Fragment>
+                <SystemInfo />
+              </BentoItem>
             </div>
           </SectionWithTitle>
         </div>
